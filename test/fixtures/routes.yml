@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  color_one: MyString
+  color_two: MyString
+  color_three: MyString
+  difficulty: MyString
+  is_live: false
+
+two:
+  color_one: MyString
+  color_two: MyString
+  color_three: MyString
+  difficulty: MyString
+  is_live: false

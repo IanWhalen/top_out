@@ -1,4 +1,18 @@
 TopOut::Application.routes.draw do
+  resources :completed_routes
+
+  resources :completed_problems
+
+  resources :climbing_sessions
+
+  resources :routes
+
+  resources :problems
+
+  resources :walls
+
+  resources :gyms
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Color one:</b>
+  <%= @route.color_one %>
+</p>
+
+<p>
+  <b>Color two:</b>
+  <%= @route.color_two %>
+</p>
+
+<p>
+  <b>Color three:</b>
+  <%= @route.color_three %>
+</p>
+
+<p>
+  <b>Difficulty:</b>
+  <%= @route.difficulty %>
+</p>
+
+<p>
+  <b>Is live:</b>
+  <%= @route.is_live %>
+</p>
+
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

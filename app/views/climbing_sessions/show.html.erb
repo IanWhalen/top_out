@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start:</b>
+  <%= @climbing_session.start %>
+</p>
+
+<p>
+  <b>Finish:</b>
+  <%= @climbing_session.finish %>
+</p>
+
+
+<%= link_to 'Edit', edit_climbing_session_path(@climbing_session) %> |
+<%= link_to 'Back', climbing_sessions_path %>

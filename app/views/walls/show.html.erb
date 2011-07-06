@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @wall.name %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @wall.height %>
+</p>
+
+
+<%= link_to 'Edit', edit_wall_path(@wall) %> |
+<%= link_to 'Back', walls_path %>

@@ -1,0 +1,21 @@
+<h1>Listing completed_problems</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @completed_problems.each do |completed_problem| %>
+  <tr>
+    <td><%= link_to 'Show', completed_problem %></td>
+    <td><%= link_to 'Edit', edit_completed_problem_path(completed_problem) %></td>
+    <td><%= link_to 'Destroy', completed_problem, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Completed problem', new_completed_problem_path %>
