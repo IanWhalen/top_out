@@ -3,6 +3,7 @@ class CreateWalls < ActiveRecord::Migration
     create_table :walls do |t|
       t.string :name
       t.integer :height
+      t.integer :gym_id
 
       t.timestamps
     end
