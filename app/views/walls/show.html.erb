@@ -1,15 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div data-role="header">
+  <h1><%= @wall.gym.name %></h1>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @wall.name %>
-</p>
-
-<p>
-  <b>Height:</b>
-  <%= @wall.height %>
-</p>
-
-
-<%= link_to 'Edit', edit_wall_path(@wall) %> |
-<%= link_to 'Back', walls_path %>
+<div data-role="content">
+  <ul data-role="listview" data-split-icon="check">
+    <li data-role="list-divider"><%= @wall.name %></li>
+    <% @wall.problems.each do |problem| %>
+      <li><a>
+          <img></img>
+          <h3><%= problem.name %></h3>
+          <p></p>
+          <p class="ui-li-aside"><strong><%= problem.difficulty_display %></strong></p>
+        </a><a href=""></a>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -13,6 +13,9 @@ TopOut::Application.routes.draw do
 
   resources :gyms
 
+
+  root :to => "gyms#index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
