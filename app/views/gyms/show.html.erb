@@ -1,13 +1,12 @@
 <div data-role="header">
-  <a href="<%= gyms_path %>" data-icon="back">To Gyms</a>
   <h1><%= @gym.name %></h1>
 </div>
 
 <div data-role="content">
   <ul data-role="listview">
     <li data-role="list-divider">Your Progress</li>
-    <li> <%= link_to "Unsolved Bouldering Problems",  %> </li>
-    <li> <%= link_to "Unsent Top Rope Routes",  %> </li>
+    <li> <%= link_to "Unsolved Problems",  %> </li>
+    <li> <%= link_to "Unsent Routes",  %> </li>
 
     <li data-role="list-divider">Bouldering Walls</li>
     <% @gym.walls.each do |wall| %>
