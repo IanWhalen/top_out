@@ -1,6 +1,4 @@
 TopOut::Application.routes.draw do
-  resources :users
-
   resources :completed_routes
 
   resources :completed_problems
