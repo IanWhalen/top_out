@@ -29,6 +29,9 @@ GEM
       activesupport (= 3.0.8)
     activesupport (3.0.8)
     arel (2.0.10)
+    authlogic (3.0.3)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
     builder (2.1.2)
     chunky_png (1.2.0)
     compass (0.11.4)
@@ -81,6 +84,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic
   compass (>= 0.11.4)
   html5-boilerplate
   jquery-rails

@@ -1,8 +1,8 @@
-<div data-role="header">
+<% content_for :header do %>
   <h1>Listing gyms</h1>
-</div>
+<% end %>
 
-<div data-role="content">
+<% content_for :content do %>
   <ul data-role="listview">
     <% @gyms.each do |gym| %>
       <li>
@@ -10,4 +10,4 @@
       </li>
     <% end %>
   </ul>
-</div>
+<% end %>

@@ -1,8 +1,8 @@
-<div data-role="header">
+<% content_for :header do %>
   <h1><%= @gym.name %></h1>
-</div>
+<% end %>
 
-<div data-role="content">
+<% content_for :content do %>
   <ul data-role="listview">
     <li data-role="list-divider">Your Progress</li>
     <li> <%= link_to "Unsolved Problems",  %> </li>
@@ -13,4 +13,5 @@
       <li> <%= link_to wall.name, wall %> </li>
     <% end %>
   </ul>
-</div>
+<% end %>
+

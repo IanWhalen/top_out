@@ -11,8 +11,17 @@
 
 <body>
   <div data-role="page">
-    <%= yield %>
+    <div data-role="header">
+      <%= yield :header %>
+    </div>
+    <div data-role="content">
+      <%= yield :content %>
+    </div>
+    <div data-role="footer">
+      <%= link_to "Register", new_user_path %>
+    </div>
   </div>
 </body>
+
 
 </html>
