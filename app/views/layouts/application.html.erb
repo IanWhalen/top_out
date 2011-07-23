@@ -18,8 +18,12 @@
       <%= yield :content %>
     </div>
     <div data-role="footer">
-      <%= link_to "Register", new_user_path %>
-      <%= link_to "Login", login_path %>
+      <% if current_user %>
+        <%= link_to "Logout", logout_path %>
+      <% else %>
+        <%= link_to "Register", new_user_path %>
+        <%= link_to "Login", login_path %>
+      <% end %>
     </div>
   </div>
 </body>
