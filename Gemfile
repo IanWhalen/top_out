@@ -25,7 +25,6 @@ gem 'sqlite3'
 gem 'compass', '>= 0.11.4'
 gem 'html5-boilerplate'
 gem 'jquery-rails'
-gem 'authlogic'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

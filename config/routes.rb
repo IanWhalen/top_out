@@ -1,16 +1,20 @@
 TopOut::Application.routes.draw do
-  match "login", :to => "user_sessions#new"
-  match "logout", :to => "user_sessions#destroy"
-  
-  resources :user_sessions
-  resources :users
   resources :completed_routes
+
   resources :completed_problems
+
   resources :climbing_sessions
+
   resources :routes
+
   resources :problems
+
   resources :walls
+
   resources :gyms
+
+
+  root :to => "gyms#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +66,6 @@ TopOut::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-  root :to => "gyms#index"
 
   # See how all your routes lay out with "rake routes"
 

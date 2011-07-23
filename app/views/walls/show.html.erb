@@ -6,12 +6,13 @@
   <ul data-role="listview" data-split-icon="check">
     <li data-role="list-divider"><%= @wall.name %></li>
     <% @wall.problems.each do |problem| %>
-      <li data-icon="check"><a> 
-        <img style="width: 24px; height: 16px; background: #FFF" class="ui-li-icon">
-        <p style="margin: 0px"><strong><%= problem.name %></strong></p>
-        <p style="margin: 0px">3 days ago</p>
-        <span class="ui-li-count"><strong> <%= problem.difficulty_display %> </strong></span>
-      </a></li>
+      <li><a>
+          <img></img>
+          <h3><%= problem.name %></h3>
+          <p></p>
+          <p class="ui-li-aside"><strong><%= problem.difficulty_display %></strong></p>
+        </a><a href=""></a>
+      </li>
     <% end %>
   </ul>
 </div>
