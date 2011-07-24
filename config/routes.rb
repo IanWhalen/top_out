@@ -1,20 +1,19 @@
 TopOut::Application.routes.draw do
-  resources :completed_routes
-
-  resources :completed_problems
-
-  resources :climbing_sessions
-
-  resources :routes
-
-  resources :problems
-
-  resources :walls
-
-  resources :gyms
-
+  get "sign_out" => "sessions#destroy", :as => "sign_out"
+  get "sign_in" => "sessions#new", :as => "sign_in"
+  get "sign_up" => "users#new", :as => "sign_up"
 
   root :to => "gyms#index"
+
+  resources :sessions
+  resources :users
+  resources :completed_routes
+  resources :completed_problems
+  resources :climbing_sessions
+  resources :routes
+  resources :problems
+  resources :walls
+  resources :gyms
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

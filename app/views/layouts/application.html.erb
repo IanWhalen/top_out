@@ -11,7 +11,20 @@
 
 <body>
   <div data-role="page">
-    <%= yield %>
+    <div data-role="header">
+      <%= yield :header %>
+    </div>
+    <div data-role="content">
+      <%= yield :content %>
+    </div>
+    <div data-role="footer">
+      <% if current_user %>
+        <%= link_to "Sign Out", sign_out_path %>
+      <% else %>
+        <%= link_to "Sign In", sign_in_path %>
+        <%= link_to "Sign Up", sign_up_path %>
+      <% end %>
+    </div>
   </div>
 </body>
 
