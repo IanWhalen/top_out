@@ -5,13 +5,33 @@
 <% content_for :content do %>
   <ul data-role="listview" data-split-icon="check">
     <li data-role="list-divider"><%= @wall.name %></li>
-    <% @wall.problems.each do |problem| %>
-      <li><a>
-          <img></img>
+    <% @wall.problems.each_with_index do |problem, index| %>
+      <li data-icon="check">
+        <a id=<%= "problem_#{index}" %>>
+        <img class="ui-li-icon">
           <h3><%= problem.name %></h3>
-          <p></p>
           <p class="ui-li-aside"><strong><%= problem.difficulty_display %></strong></p>
-        </a><a href=""></a>
+        </a>
+        <script type="text/javascript"> 
+          $(<%= "'#problem_#{index}'" %>).live('vclick', function() {
+          $(this).simpledialog({
+            'mode' : 'bool',
+            'prompt' : 'You just climbed it?',
+            'buttons' : {
+              <%= "'#{problem.name}'" %>: {
+                click: function () { 
+                }
+              },
+              'Cancel': {
+                click: function () { 
+                  },
+                icon: "delete",
+                theme: "c"
+              }
+            }
+          })
+        });
+      </script>
       </li>
     <% end %>
   </ul>
