@@ -2,6 +2,7 @@ class Problem < ActiveRecord::Base
   default_scope :order => 'difficulty_position'
   
   belongs_to :wall
+  has_many :completed_problems
   has_many :users, :through => :completed_problems
 
   validates_inclusion_of :color_one, :color_two, :color_three, :in => Color::CHOICES, :allow_blank => true
