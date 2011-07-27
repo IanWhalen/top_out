@@ -5,51 +5,6 @@
 <% content_for :content do %>
   <ul data-role="listview" data-split-icon="check">
     <li data-role="list-divider"><%= @wall.name %></li>
-    <% @wall.problems.each do |problem| %>
-      <li data-icon="check">
-      
-        <a id=<%= "problem_#{problem.id}" %>>
-          <img class="ui-li-icon">
-          <h3><%= problem.name %></h3>
-          <p><%= show_last_completed_problem_for_user(current_user, problem) %></p>
-          <p class="ui-li-aside"><strong><%= problem.difficulty_display %></strong></p>
-        </a>
-        
-        <script type="text/javascript"> 
-          $(<%= "'#problem_#{problem.id}'" %>).live('vclick', function() {
-          $(this).simpledialog({
-            'mode' : 'bool',
-            'prompt' : <%= "'You just climbed #{problem.name}?'" %>,
-            'buttons' : {
-              'Yeah!': {
-                click: function () { 
-                  $.ajax({
-                    type: 'POST',
-                    data: { problem_id: <%= problem.id %>},
-                    success: function(response){
-                      if (response.location) {
-                        $.mobile.changePage(response.location, "slide", false, true);
-                      } else {
-                      
-                      }
-                    },
-                    error: function(response){
-                    },
-                    url: '/completed_problems.json'
-                  });
-                }
-              },
-              'Nope': {
-                click: function(){},
-                icon: "delete",
-                theme: "c"
-              }
-            }
-          })
-        });
-      </script>
-      
-      </li>
-    <% end %>
+    <%= render :partial => 'problem', :collection => @wall.problems %>
   </ul>
 <% end %>

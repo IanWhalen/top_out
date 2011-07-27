@@ -5,8 +5,8 @@ module WallsHelper
     completed = user.last_completed_problem(problem)
 
     return "Not done yet" if completed.nil?
-  
-    time_ago_in_words(completed.created_at)
+ 
+    return "#{time_ago_in_words(completed.created_at)} ago"
   end
 
 end

@@ -20,7 +20,7 @@ class CompletedProblemsController < ApplicationController
     if @completed_problem.save
       render :json => { }
     elsif @completed_problem.user == nil
-      render :json => { :location => sign_in_path }
+      render :json => { :sign_in_needed => sign_in_path }
     else
       render :json => { :location => root_url, :notice => 'No idea what happened there.' }
     end
