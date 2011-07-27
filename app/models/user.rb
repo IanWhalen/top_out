@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :password
   validates_uniqueness_of :email
+
+  # Finds the presence of last completed problem
+  def last_completed_problem(problem)
+    completed_problems.order('created_at DESC').where(:completed_problems => {:problem_id => problem}).limit(1).first
+  end
+
 end

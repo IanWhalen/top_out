@@ -13,7 +13,7 @@ class WallsController < ApplicationController
   # GET /walls/1
   # GET /walls/1.xml
   def show
-    @wall = Wall.find(params[:id])
+    @wall = Wall.find(params[:id], :include => :problems)
 
     respond_to do |format|
       format.html # show.html.erb
