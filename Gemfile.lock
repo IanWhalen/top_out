@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/sferik/rails_admin.git
+  revision: 83dacd631f7aa0268a7ee1f0204d0bc3eaa9ed43
+  branch: rails-3.1
+  specs:
+    rails_admin (0.0.1)
+      builder (~> 3.0.0)
+      fastercsv
+      fastercsv (~> 1.5.4)
+      haml (>= 3.1.0, < 3.3.0)
+      rails (~> 3.1.0.rc1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -39,8 +51,14 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    devise (1.4.2)
+      bcrypt-ruby (~> 2.1.2)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
     erubis (2.7.0)
+    fastercsv (1.5.4)
     fssm (0.2.7)
+    haml (3.1.2)
     hike (1.2.0)
     hirb (0.4.5)
     html5-boilerplate (1.0.0)
@@ -55,6 +73,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.3)
+    orm_adapter (0.0.5)
     polyglot (0.3.1)
     rack (1.3.1)
     rack-cache (1.0.2)
@@ -91,14 +110,18 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
+    warden (1.0.5)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   compass (>= 0.11.4)
+  devise
   hirb
   html5-boilerplate
   jquery-rails
   rails (= 3.1.0.rc1)
+  rails_admin!
   sqlite3
