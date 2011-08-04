@@ -1,12 +1,8 @@
 TopOut::Application.routes.draw do
-  get "sign_out" => "sessions#destroy", :as => "sign_out"
-  get "sign_in" => "sessions#new", :as => "sign_in"
-  get "sign_up" => "users#new", :as => "sign_up"
+  devise_for :users
 
   root :to => "gyms#index"
 
-  resources :sessions
-  resources :users
   resources :completed_routes
   resources :completed_problems
   resources :climbing_sessions
