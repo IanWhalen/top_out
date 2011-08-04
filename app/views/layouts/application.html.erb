@@ -12,13 +12,20 @@
 </head>
 
 <body>
+
   <div data-role="page">
+
     <div data-role="header">
       <%= yield :header %>
     </div>
+
     <div data-role="content">
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+      <%- end -%>
       <%= yield :content %>
     </div>
+
     <div data-role="footer">
       <% if current_user %>
         <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
@@ -27,6 +34,7 @@
         <%= link_to "Sign Up", new_user_registration_path %>
       <% end %>
     </div>
+
   </div>
 </body>
 
