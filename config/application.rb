@@ -38,5 +38,8 @@ module TopOut
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Configure Sprockets
+    config.assets.enabled = true
   end
 end
