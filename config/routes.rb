@@ -1,8 +1,5 @@
 TopOut::Application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
-
-  root :to => "gyms#index"
 
   resources :completed_routes
   resources :completed_problems
@@ -12,6 +9,7 @@ TopOut::Application.routes.draw do
   resources :walls
   resources :gyms
 
+  root :to => "gyms#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
