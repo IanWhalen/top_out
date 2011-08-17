@@ -1,35 +1,12 @@
 class ProblemsController < ApplicationController
-  # GET /problems
-  # GET /problems.xml
-  def index
-    @problems = Problem.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @problems }
-    end
-  end
-
-  # GET /problems/1
-  # GET /problems/1.xml
-  def show
-    @problem = Problem.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @problem }
-    end
-  end
+  load_and_authorize_resource
 
   # GET /problems/new
   # GET /problems/new.xml
   def new
-    @problem = Problem.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @problem }
-    end
+    @problem = Problem.new(:is_live => true)
+    @walls = Wall.all
+    @colors = Color::CHOICES
   end
 
   # GET /problems/1/edit
@@ -42,14 +19,10 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(params[:problem])
 
-    respond_to do |format|
-      if @problem.save
-        format.html { redirect_to(@problem, :notice => 'Problem was successfully created.') }
-        format.xml  { render :xml => @problem, :status => :created, :location => @problem }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @problem.errors, :status => :unprocessable_entity }
-      end
+    if @problem.save
+      redirect_to(new_problem_path, :notice => 'Problem was successfully created.')
+    else
+      render :action => "new"
     end
   end
 

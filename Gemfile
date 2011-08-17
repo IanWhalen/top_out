@@ -13,6 +13,7 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'jquery-rails'
 gem 'hirb'
 gem 'devise'
+gem 'cancan'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
