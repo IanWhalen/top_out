@@ -1,24 +1,6 @@
 class WallsController < ApplicationController
-  # GET /walls
-  # GET /walls.xml
-  def index
-    @walls = Wall.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @walls }
-    end
-  end
-
-  # GET /walls/1
-  # GET /walls/1.xml
   def show
     @wall = Wall.find(params[:id], :include => :problems)
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @wall }
-    end
   end
 
   # GET /walls/new
