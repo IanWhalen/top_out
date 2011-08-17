@@ -1,11 +1,18 @@
 class Problem < ActiveRecord::Base
-  default_scope :order => 'difficulty_position'
-  
   belongs_to :wall
   has_many :completed_problems
   has_many :users, :through => :completed_problems
 
   validates_inclusion_of :color_one, :color_two, :color_three, :in => Color::CHOICES, :allow_blank => true
+  validates_format_of :difficulty, :with => /^V\d+[\+\-]?/
+  validates_presence_of :wall_id
+
+  NULL_ATTRS = %w( color_one color_two color_three )
+  before_save :nil_if_blank
+
+  def nil_if_blank
+    NULL_ATTRS.each { |attr| self[attr] = nil if self[attr].blank? }
+  end
 
   def list_colors
     @color_list = [color_one, color_two, color_three].compact
@@ -29,12 +36,4 @@ class Problem < ActiveRecord::Base
     end
   end
 
-  def difficulty_sort
-    plus_minus_hash = { "-"=>0, ""=>1, "+"=>2 }
-    
-    r = /(V)(\d{1,2})([+-]*)/
-    m = r.match difficulty
-    @order = (m[2] * 3) + plus_minus_hash[m[3]]
-  end
-  
 end

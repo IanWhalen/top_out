@@ -13,7 +13,13 @@ Wall.delete_all
 Problem.delete_all
 ['The Beast', 'Nor\'Easter (Yellow)'].each do |wall|
   @wall = @gym.walls.create(:name => wall)
-  @problem = @wall.problems.create(:color_one => :Blue, :color_two => :White, :color_three => :Green, :difficulty_display => "V2+", :difficulty_position => 8)
-  @problem = @wall.problems.create(:color_one => :Black, :color_two => :'Neon Green', :difficulty_display => "V2-", :difficulty_position => 6)
-  @problem = @wall.problems.create(:color_one => :Blue, :difficulty_display => "V2", :difficulty_position => 7)
+  @problem = @wall.problems.create(:color_one => 'Blue', :color_two => 'White', :color_three => 'Green', :difficulty=> "V2+")
+  @problem = @wall.problems.create(:color_one => 'Black', :color_two => 'Neon Green', :difficulty => "V2-")
+  @problem = @wall.problems.create(:color_one => 'Blue', :difficulty => "V2")
 end
+
+# Create test admin and normal user
+User.delete_all
+@user = User.create(:email => 'user@thetopout.com', :password => 'usertest')
+@admin = User.create(:email => 'admin@thetopout.com', :password => 'admintest')
+@admin.update_attribute :admin, true
