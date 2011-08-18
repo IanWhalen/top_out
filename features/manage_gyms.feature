@@ -1,0 +1,9 @@
+Feature: Manage Gyms
+    In order to ...
+    As an ...
+    I want ...
+
+    Scenario: Gym List
+	Given I have gyms named Brooklyn Boulders
+	When I go to the list of gyms
+	Then I should see "Brooklyn Boulders"

@@ -1,35 +1,17 @@
 class GymsController < ApplicationController
   # GET /gyms
-  # GET /gyms.xml
   def index
     @gyms = Gym.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @gyms }
-    end
   end
 
   # GET /gyms/1
-  # GET /gyms/1.xml
   def show
     @gym = Gym.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @gym }
-    end
   end
 
   # GET /gyms/new
-  # GET /gyms/new.xml
   def new
     @gym = Gym.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @gym }
-    end
   end
 
   # GET /gyms/1/edit
