@@ -1,10 +1,8 @@
 module NavigationHelpers
   # Maps a name to a path. Used by the
-  #
   #   When /^I go to (.+)$/ do |page_name|
-  #
   # step definition in web_steps.rb
-  #
+
   def path_to(page_name)
     case page_name
 
@@ -12,6 +10,9 @@ module NavigationHelpers
       root_path
     when /^the list of gyms$/
       gyms_path
+    when /^the gym page for (.+)$/
+      g = Gym.find_by_name($1)
+      gym_path(g)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
