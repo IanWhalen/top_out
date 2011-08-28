@@ -11,7 +11,7 @@ Given /^(.+) has walls named (.+)$/ do |gym_name, wall_names|
 end
 
 Given /^I am not signed in$/ do
-  visit('/users/sign_out') # ensure that at least
+  visit('/users/sign_out')
 end
 
 Given /^no user exists with an email of "(.*)"$/ do |email|
@@ -42,6 +42,10 @@ end
 
 When /^I return next time$/ do
   And %{I go to the home page}
+end
+
+When /^I sign out$/ do
+  visit('/users/sign_out')
 end
 
 Then /^I should be already signed in$/ do
