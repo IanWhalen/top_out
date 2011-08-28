@@ -8,7 +8,6 @@ Feature: Manage Gyms
 	When I go to the list of gyms
 	Then I should see "Brooklyn Boulders"
 
-    @dev
     Scenario: Wall List
 	Given I have gyms named Brooklyn Boulders
 	And Brooklyn Boulders has walls named The Beast, Noreaster Yellow

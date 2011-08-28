@@ -13,6 +13,11 @@ module NavigationHelpers
     when /^the gym page for (.+)$/
       g = Gym.find_by_name($1)
       gym_path(g)
+    when /^the sign up page$/
+      new_user_registration_path
+    when /^the sign in page$/
+      new_user_session_path
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
