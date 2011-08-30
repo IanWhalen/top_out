@@ -11,8 +11,9 @@ module NavigationHelpers
     when /^the list of gyms$/
       gyms_path
     when /^the gym page for (.+)$/
-      g = Gym.find_by_name($1)
-      gym_path(g)
+      gym_path(Gym.find_by_name($1))
+    when /^the wall page for (.+)$/
+      wall_path(Wall.find_by_name($1))
     when /^the sign up page$/
       new_user_registration_path
     when /^the sign in page$/
