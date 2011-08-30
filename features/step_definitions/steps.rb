@@ -28,9 +28,7 @@ When /^I click the problem "(.*)"$/ do |problem_name|
 end
 
 When /^I click the modal button "Yeah!"$/ do
-  debugger
   find(:xpath, "//span[text() = 'Yeah!']/parent::span/parent::a").click
-  debugger
 end
 
 # VZ tech support 877-600-2051
