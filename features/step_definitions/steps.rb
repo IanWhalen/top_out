@@ -31,10 +31,16 @@ When /^I click the modal button "Yeah!"$/ do
   find(:xpath, "//span[text() = 'Yeah!']/parent::span/parent::a").click
 end
 
-# VZ tech support 877-600-2051
-
-Given /^no user exists with an email of "(.*)"$/ do |email|
+Given /^no user exists with email "(.*)"$/ do |email|
   User.find(:first, :conditions => { :email => email }).should be_nil
+end
+
+Given /^user "(.*)" has admin privileges$/ do |email|
+  User.find(:first, :conditions => { :email => email }).update_attribute :admin, true
+end
+
+Given /^a user exists with email "(.*)" and password "(.*)"$/ do |email, password|
+  User.create!(:email => email, :password => password)
 end
 
 When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
@@ -49,10 +55,6 @@ Then /^I should be signed out$/ do
   And %{I should see "Sign Up"}
   And %{I should see "Sign In"}
   And %{I should not see "Sign Out"}
-end
-
-Given /^I am a user with email "(.*)" and password "(.*)"$/ do |email, password|
-  User.create!(:email => email, :password => password)
 end
 
 Then /^I should be signed in$/ do

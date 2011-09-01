@@ -4,7 +4,7 @@ Feature: Manage Problems
 	  I want ...
 
 		Background:
-			Given I am a user with email "user@test.com" and password "password"
+			Given a user exists with email "user@test.com" and password "password"
 			And I am not signed in
 			And I have gyms named Brooklyn Boulders
 			And Brooklyn Boulders has walls named The Beast
