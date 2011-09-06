@@ -1,21 +1,16 @@
 class ProblemsController < ApplicationController
   load_and_authorize_resource
 
-  # GET /problems/new
-  # GET /problems/new.xml
   def new
     @problem = Problem.new(:is_live => true)
     @walls = Wall.all
     @colors = Color::CHOICES
   end
 
-  # GET /problems/1/edit
   def edit
     @problem = Problem.find(params[:id])
   end
 
-  # POST /problems
-  # POST /problems.xml
   def create
     @problem = Problem.new(params[:problem])
 

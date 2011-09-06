@@ -1,37 +1,26 @@
 class WallsController < ApplicationController
+  load_and_authorize_resource
+  
   def show
     @wall = Wall.find(params[:id], :include => :problems)
   end
 
-  # GET /walls/new
-  # GET /walls/new.xml
   def new
     @wall = Wall.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @wall }
-    end
+    @gyms = Gym.all
   end
 
-  # GET /walls/1/edit
   def edit
     @wall = Wall.find(params[:id])
   end
 
-  # POST /walls
-  # POST /walls.xml
   def create
     @wall = Wall.new(params[:wall])
 
-    respond_to do |format|
-      if @wall.save
-        format.html { redirect_to(@wall, :notice => 'Wall was successfully created.') }
-        format.xml  { render :xml => @wall, :status => :created, :location => @wall }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @wall.errors, :status => :unprocessable_entity }
-      end
+    if @wall.save
+      redirect_to(new_wall_path, :notice => 'Wall was successfully created.')
+    else
+      render :action => "new"
     end
   end
 

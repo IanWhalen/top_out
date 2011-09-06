@@ -19,6 +19,9 @@
     <%= f.label :height %><br />
     <%= f.text_field :height %>
   </div>
+  <div class="field">
+    <%= f.collection_select :gym_id, @gyms, :id, :name, :id => "gym_select", :prompt => "Select a gym" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
