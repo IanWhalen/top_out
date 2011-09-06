@@ -17,7 +17,7 @@ Feature: Add Problems
 			And I go to the new wall page
 			Then I should be on the new wall page
 
-		Scenario: Create single color problem
+		Scenario: Create new wall
 			When I sign in as "admin@test.com/password"
 			And I go to the new wall page
 			When I select "Brooklyn Boulders" from "wall_gym_id"
