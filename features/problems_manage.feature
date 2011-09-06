@@ -5,6 +5,8 @@ Feature: Manage Problems
 
 		Background:
 			Given a user exists with email "user@test.com" and password "password"
+			And a user exists with email "admin@test.com" and password "password"
+			And user "admin@test.com" has admin privileges
 			And I am not signed in
 			And I have gyms named Brooklyn Boulders
 			And Brooklyn Boulders has walls named The Beast
