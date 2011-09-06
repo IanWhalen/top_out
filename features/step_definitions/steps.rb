@@ -19,6 +19,19 @@ Given /^(.+) has a problem with colors (.+)$/ do |wall_name, colors|
   @wall.problems.create!(:color_one => color_one, :color_two => color_two, :color_three => color_three, :difficulty => "V2+")
 end
 
+Then /^there is a "(.*)" problem with colors "([^"]*)" on wall "([^"]*)"$/ do |diff, colors, wall_name|
+  @wall = Wall.find_by_name(wall_name)
+  @color_list = colors.split(', ')
+  c_one = @color_list[0]
+  c_two = @color_list[1]
+  c_three = @color_list[2]
+  @p = @wall.problems.first(:conditions => { :color_one => c_one, :color_two => c_two, :color_three => c_three, :difficulty => diff })
+end
+
+Then /^there is a problem named "(.*)"$/ do |problem_name|
+  problem_name == @p.name
+end
+
 Given /^I am not signed in$/ do
   visit('/users/sign_out')
 end
@@ -72,4 +85,3 @@ end
 Then /^I should be already signed in$/ do
   And %{I should see "Sign Out"}
 end
-
