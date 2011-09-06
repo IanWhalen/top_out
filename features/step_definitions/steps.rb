@@ -32,6 +32,10 @@ Then /^there is a problem named "(.*)"$/ do |problem_name|
   problem_name == @p.name
 end
 
+Then /^there is a wall named "(.*)"$/ do |wall_name|
+  Wall.exists?(:name => wall_name)
+end
+
 Given /^I am not signed in$/ do
   visit('/users/sign_out')
 end
