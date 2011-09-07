@@ -20,3 +20,31 @@
   float: left;
   height: 100%;
 }
+
+#home-two-col #home-left-col {
+  float: left;
+  width: 80%;
+  margin-bottom: 9px;
+}
+
+#home-two-col #home-right-col {
+  float: left;
+  width: 20%;
+  margin-bottom: 9px;
+}
+
+#home-image {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #999999;
+  padding: 2px;
+  width: 284px;
+}
+
+#home-title {
+  margin: 9px 0px 12px 15px;
+}
+
+#home-tagline {
+  margin: 0px;
+}
