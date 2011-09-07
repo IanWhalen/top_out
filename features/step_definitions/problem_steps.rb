@@ -21,7 +21,7 @@ Then /^there is a problem named "(.*)"$/ do |problem_name|
 end
 
 When /^I click the problem "(.*)"$/ do |problem_name|
-  find(:xpath, "//h3[text() = '#{problem_name}']/parent::a").click
+  find(:xpath, "//h3[text() = '#{problem_name}']/parent::div/parent::a").click
 end
 
 When /^I click the modal button "Yeah!"$/ do

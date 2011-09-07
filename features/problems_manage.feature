@@ -26,3 +26,8 @@ Feature: Manage Problems
 			And I click the problem "Blue"
 			And I click the modal button "Yeah!"
 			Then I should see "Nice job!"
+				
+		Scenario: Accessing Wall page as admin
+			When I sign in as "admin@test.com/password"
+			And I go to the wall page for The Beast
+			Then I should see "The Beast"
