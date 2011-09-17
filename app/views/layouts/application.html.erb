@@ -4,10 +4,10 @@
 <head>
   <title>The Top Out</title>
   <%= stylesheet_link_tag "application" %>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.css" />
   <link type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" rel="stylesheet" /> 
   <%= javascript_include_tag "application" %>
-  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.js"></script>
   <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.js"></script>  
   <%= csrf_meta_tag %>
 </head>
@@ -19,9 +19,9 @@
     <div data-role="header">
       <%= yield :header %>
       <% if current_user %>
-        <%= link_to "Sign Out", destroy_user_session_path, :class => "ui-btn-right" %>
+        <%= link_to "Sign Out", destroy_user_session_path, :class => "ui-btn-right button", :id => "sign-out" %>
       <% else %>  
-        <%= link_to "Sign In", new_user_session_path, :class => "ui-btn-right" %>
+        <%= link_to "Sign In", new_user_session_path, :class => "ui-btn-right button", :id => "sign-in" %>
       <% end %>  
     </div>
 
