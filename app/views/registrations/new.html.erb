@@ -1,7 +1,3 @@
-<% content_for :header do %>
-<h2>Sign up</h2>
-<% end %>
-
 <% content_for :content do %>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -10,14 +6,11 @@
       <div class="flash <%= key %>"><%= value %></div>
   <% end %>
   
-  <p><%= f.label :email %>
-  <%= f.email_field :email %></p>
+  <p><%= f.email_field :email, :placeholder => "Email" %></p>
 
-  <p><%= f.label :password %>
-  <%= f.password_field :password %></p>
+  <p><%= f.password_field :password, :placeholder => "Password" %></p>
 
-  <p><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %></p>
 
   <p><%= f.submit "Sign up" %></p>
   <br/>
