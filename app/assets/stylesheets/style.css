@@ -1,5 +1,10 @@
 /* Global Styles */
 
+.ui-title#footer-text {
+  white-space: normal!important;
+  margin: .6em 0px .8em!important;
+}
+
 .button {
   font-size: 16px!important;
   text-decoration: none!important;
@@ -15,13 +20,12 @@
 }
 
 #sign-in-out {
-  margin-top: -3px;
   background: #DDD;
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #FEFEFE), color-stop(1, #DDD) );
   background:-moz-linear-gradient( center top, #FEFEFE 5%, #DDD 100% );
 }
 
-/* Home Page Styles */
+/* Anonymous Home Page Styles */
 
 #home-sign-up {
   box-shadow: 0 1px 0 rgba(0,0,0,0);

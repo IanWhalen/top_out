@@ -17,7 +17,10 @@
   <div data-role="page">
 
     <div data-role="header">
-      <%= yield :header %>
+      <div>
+        <h2 id="home-title">The Top Out</h2>
+      </div>  
+      
       <% if current_user %>
         <%= link_to "Sign Out", destroy_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" %>
       <% else %>  
@@ -38,9 +41,7 @@
     </div>
 
     <div data-role="footer">
-      <% if not current_user %>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>  
+      <h5 id="footer-text">This site is in alpha. Please be gentle.</h5>
     </div>
 
   </div>
