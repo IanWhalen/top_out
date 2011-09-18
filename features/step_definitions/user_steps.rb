@@ -23,7 +23,6 @@ When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
 end
 
 Then /^I should be signed out$/ do
-  And %{I should see "Sign Up"}
   And %{I should see "Sign In"}
   And %{I should not see "Sign Out"}
 end
