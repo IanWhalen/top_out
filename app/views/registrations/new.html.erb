@@ -10,17 +10,18 @@
       <div class="flash <%= key %>"><%= value %></div>
   <% end %>
   
-  <p><%= f.label :email %><br />
+  <p><%= f.label :email %>
   <%= f.email_field :email %></p>
 
-  <p><%= f.label :password %><br />
+  <p><%= f.label :password %>
   <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %><br />
+  <p><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></p>
 
   <p><%= f.submit "Sign up" %></p>
+  <br/>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<p>Have an account? <%= link_to "Sign in here!", new_registration_path(resource_name) %></p>
 <% end %>
