@@ -17,13 +17,13 @@ end
 When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
   Given %{I am not signed in}
   When %{I go to the sign in page}
-  And %{I fill in "Email" with "#{email}"}
-  And %{I fill in "Password" with "#{password}"}
+  And %{I fill in "email" with "#{email}"}
+  And %{I fill in "password" with "#{password}"}
   And %{I press "Sign in"}
 end
 
 Then /^I should be signed out$/ do
-  And %{I should see "Sign In"}
+  And %{I should see "Sign in"}
   And %{I should not see "Sign Out"}
 end
 

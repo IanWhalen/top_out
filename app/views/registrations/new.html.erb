@@ -1,4 +1,7 @@
 <% content_for :content do %>
+  <h4 id="account-manage-title">Sign up now!</h4>
+  <p>Just type in your email and password below so you can start tracking your climbing.</p>
+  
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
@@ -6,15 +9,15 @@
       <div class="flash <%= key %>"><%= value %></div>
   <% end %>
   
-  <p><%= f.email_field :email, :placeholder => "Email" %></p>
+  <p><%= f.email_field :email, :id => "email", :placeholder => "Email" %></p>
 
-  <p><%= f.password_field :password, :placeholder => "Password" %></p>
+  <p><%= f.password_field :password, :id => "password", :placeholder => "Password" %></p>
 
-  <p><%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %></p>
+  <p><%= f.password_field :password_confirmation, :id => "password_confirmation", :placeholder => "Password confirmation" %></p>
 
   <p><%= f.submit "Sign up" %></p>
   <br/>
 <% end %>
 
-<p>Have an account? <%= link_to "Sign in here!", new_registration_path(resource_name) %></p>
+<p>Have an account? <%= link_to "Sign in here!", new_session_path(resource_name) %></p>
 <% end %>

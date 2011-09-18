@@ -73,6 +73,14 @@
 
 /* Other Styles (To Be Organized) */
 
+.ui-link {
+  text-decoration: none!important;
+}
+
+#account-manage-title {
+  margin: 0px;
+}
+
 .ui-li-aside.difficulty { 
   padding-top: 18px;
   width: 10%;

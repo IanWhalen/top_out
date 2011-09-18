@@ -24,7 +24,7 @@
       <% if current_user %>
         <%= link_to "Sign Out", destroy_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" %>
       <% else %>  
-        <%= link_to "Sign In", new_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" %>
+        <%= link_to_unless_current "Sign In", new_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" do end%>
       <% end %>  
     </div>
 
