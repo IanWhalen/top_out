@@ -28,7 +28,7 @@
     <%= f.check_box :is_live %>
   </div>
   <div class="field">
-    <%= f.collection_select :wall_id, @walls, :id, :name, {:prompt => "Select a wall"}, {:"data-native-menu" => "false", :id => "wall_select"} %>
+    <%= f.collection_select :wall_id, @walls, :id, :gym_plus_wall_name, {:prompt => "Select a wall"}, {:"data-native-menu" => "false", :id => "wall_select"} %>
   </div>
   <div class="actions">
     <%= f.submit %>
