@@ -1,1 +1,7 @@
-<%= link_to 'Find your local climbing gym', gyms_path %>
+<ul data-role="listview">
+
+  <li><%= link_to 'Find your local climbing gym', gyms_path %></li>
+
+  <li><%= link_to 'Add a new problem (Admin only)', new_problem_path if current_user.try(:admin?) %></li>
+
+</ul>
