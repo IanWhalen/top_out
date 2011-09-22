@@ -24,7 +24,7 @@ end
 
 Then /^I should be signed out$/ do
   And %{I should see "Sign in"}
-  And %{I should not see "Sign Out"}
+  And %{I should not see "Sign out"}
 end
 
 Then /^I should be signed in$/ do
@@ -36,5 +36,5 @@ When /^I sign out$/ do
 end
 
 Then /^I should be already signed in$/ do
-  And %{I should see "Sign Out"}
+  And %{I should see "Sign out"}
 end

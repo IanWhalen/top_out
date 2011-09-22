@@ -24,6 +24,10 @@ When /^I click the problem "(.*)"$/ do |problem_name|
   find(:xpath, "//h3[text() = '#{problem_name}']/parent::div/parent::a").click
 end
 
-When /^I click the modal button "Yeah!"$/ do
-  find(:xpath, "//span[text() = 'Yeah!']/parent::span/parent::a").click
+When /^I confirm the popup$/ do
+  page.driver.browser.switch_to.alert.accept    
+end
+
+When /^I dismiss the popup$/ do
+  page.driver.browser.switch_to.alert.dismiss
 end
