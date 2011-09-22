@@ -22,8 +22,10 @@
 
     <div data-role="header">
       <div>
-        <h2 id="home-title">The Top Out</h2>
-      </div>  
+        <%= link_to root_path do %>
+          <h2 id="home-title">The Top Out</h2>
+        <% end %>
+      </div>
       
       <% if current_user %>
         <%= link_to "Sign out", destroy_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" %>
