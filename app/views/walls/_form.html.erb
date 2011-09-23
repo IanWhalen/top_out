@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :id => "wall-name", :placeholder => "Wall name" %>
   </div>
   <div class="field">
-    <%= f.label :height %><br />
-    <%= f.text_field :height %>
+    <%= f.text_field :height, :id => "wall-height", :placeholder => "Wall height" %>
   </div>
   <div class="field">
     <%= f.collection_select :gym_id, @gyms, :id, :name, :id => "gym_select", :prompt => "Select a gym" %>

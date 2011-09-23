@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.select :color_one, @colors.map {|k, v| k}, {:prompt => "Select first color"}, {:"data-native-menu" => "false"} %>
+    <%= f.select :color_one, @colors.map {|k, v| k}, {:prompt => "Select first color"}, {} %>
   </div>
   <div class="field">
-    <%= f.select :color_two, @colors.map {|k, v| k}, {:prompt => "Select second color"}, {:"data-native-menu" => "false"} %>
+    <%= f.select :color_two, @colors.map {|k, v| k}, {:prompt => "Select second color"}, {} %>
   </div>
   <div class="field">
-    <%= f.select :color_three, @colors.map {|k, v| k}, {:prompt => "Select third color"}, {:"data-native-menu" => "false"} %>
+    <%= f.select :color_three, @colors.map {|k, v| k}, {:prompt => "Select third color"}, {} %>
   </div>
   <div class="field">
     <%= f.text_field :difficulty, :id => 'difficulty', :placeholder => 'Difficulty' %>
@@ -28,7 +28,7 @@
     <%= f.check_box :is_live %>
   </div>
   <div class="field">
-    <%= f.collection_select :wall_id, @walls, :id, :gym_plus_wall_name, {:prompt => "Select a wall"}, {:"data-native-menu" => "false", :id => "wall_select"} %>
+    <%= f.collection_select :wall_id, @walls, :id, :gym_plus_wall_name, {:prompt => "Select a wall"}, {:id => "wall_select"} %>
   </div>
   <div class="actions">
     <%= f.submit %>
