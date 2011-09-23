@@ -26,7 +26,7 @@ Feature: Add Problems
 			And I go to the new problem page
 			When I select "Blue" from "problem_color_one"
 			And I fill in "difficulty" with "V0"
-			And I select "Brooklyn Boulders - The Beast" from "wall_select-button"
+			And I select "Brooklyn Boulders - The Beast" from "wall_select"
 			And I press "Create Problem"
 			Then I should be on the new problem page
 			And there is a "V0" problem with colors "Blue" on wall "The Beast"
@@ -38,7 +38,7 @@ Feature: Add Problems
 			When I select "Blue" from "problem_color_one"
 			When I select "White" from "problem_color_two"
 			And I fill in "difficulty" with "V0"
-			And I select "Brooklyn Boulders - The Beast" from "wall_select-button"
+			And I select "Brooklyn Boulders - The Beast" from "wall_select"
 			And I press "Create Problem"
 			Then I should be on the new problem page
 			And there is a "V0" problem with colors "Blue, White" on wall "The Beast"
@@ -51,7 +51,7 @@ Feature: Add Problems
 			When I select "Neon Green" from "problem_color_two"
 			When I select "Black" from "problem_color_three"
 			And I fill in "difficulty" with "V0"
-			And I select "Brooklyn Boulders - The Beast" from "wall_select-button"
+			And I select "Brooklyn Boulders - The Beast" from "wall_select"
 			And I press "Create Problem"
 			Then I should be on the new problem page
 			And there is a "V0" problem with colors "Blue, Neon Green, Black" on wall "The Beast"

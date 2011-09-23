@@ -21,8 +21,8 @@ Feature: Add Problems
 			When I sign in as "admin@test.com/password"
 			And I go to the new wall page
 			When I select "Brooklyn Boulders" from "wall_gym_id"
-			And I fill in "Name" with "The Beast"
-			And I fill in "Height" with "30"
+			And I fill in "wall-name" with "The Beast"
+			And I fill in "wall-height" with "30"
 			And I press "Create Wall"
 			Then I should be on the new wall page
 			And there is a wall named "The Beast"
