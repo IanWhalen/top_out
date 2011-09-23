@@ -1,12 +1,15 @@
-<% content_for :header do %>
-  <h1><%= @gym.name %></h1>
+<% content_for :navbar do %>
+  <div data-role="navbar">
+    <ul>
+      <li><%= link_to @gym.name %></li>
+    </ul>
+  </div>
 <% end %>
 
 <% content_for :content do %>
   <ul data-role="listview">
     <li data-role="list-divider">Your Progress</li>
     <li> <%= link_to "Unsolved Problems",  %> </li>
-    <li> <%= link_to "Unsent Routes",  %> </li>
 
     <li data-role="list-divider">Bouldering Walls</li>
     <% @gym.walls.each do |wall| %>

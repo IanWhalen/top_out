@@ -32,6 +32,7 @@
       <% else %>  
         <%= link_to_unless_current "Sign in", new_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" do end%>
       <% end %>  
+      <%= yield :navbar %>
     </div>
 
     <div data-role="content">
