@@ -1,10 +1,10 @@
-Given /^(.+) has a problem with colors (.+) and difficulty (.+)$/ do |wall_name, colors, difficulty|
+Given /^(.+) has a problem with colors (.+) and difficulty (.+)$/ do |wall_name, colors, diff|
   @wall = Wall.find_by_name(wall_name)
   @color_list = colors.split(', ')
   color_one = @color_list[0]
   color_two = @color_list[1]
   color_three = @color_list[2]
-  @wall.problems.create!(:color_one => color_one, :color_two => color_two, :color_three => color_three, :difficulty => difficulty)
+  @wall.problems.create!(:color_one => color_one, :color_two => color_two, :color_three => color_three, :difficulty => diff)
 end
 
 Then /^there is a "(.*)" problem with colors "([^"]*)" on wall "([^"]*)"$/ do |diff, colors, wall_name|
@@ -33,6 +33,10 @@ When /^I dismiss the popup$/ do
 end
 
 Then /^I should see problems in the order (.+)$/ do |problems|
+  doc = Regexp.escape(page.html)
   @problem_list = problems.split(', ')
-  # Iterate over @problem_list and ensure proper ordering on page
+  @problem_list.each_with_index do |p, index|
+    next_p = @problem_list[index+1]
+    return false unless doc =~ /#{p}.*#{next_p}/ if not next_p.nil?
+  end
 end
