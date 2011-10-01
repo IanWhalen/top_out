@@ -17,9 +17,9 @@ class Difficulty
     @difficulty
   end
 
-  def to_i
-    parts = @difficulty.match /^V(\d+)([\+\-]?)/
-    (parts[1].to_i * 3) + plus_minus_values[parts[2]]
+  def self.to_int(s)
+    parts = s.match /^V(\d+)([\+\-]?)/
+    (parts[1].to_i * 3) + PLUS_MINUS_VALUES[parts[2]]
   end
 
 end

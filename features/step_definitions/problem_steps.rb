@@ -33,10 +33,9 @@ When /^I dismiss the popup$/ do
 end
 
 Then /^I should see problems in the order (.+)$/ do |problems|
-  doc = Regexp.escape(page.html)
   @problem_list = problems.split(', ')
   @problem_list.each_with_index do |p, index|
     next_p = @problem_list[index+1]
-    return false unless doc =~ /#{p}.*#{next_p}/ if not next_p.nil?
+    return false unless page.html =~ /#{p}.*#{next_p}/m if not next_p.nil?
   end
 end

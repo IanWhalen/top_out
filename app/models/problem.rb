@@ -7,6 +7,8 @@ class Problem < ActiveRecord::Base
   validates_format_of :difficulty, :with => /^V\d+[\+\-]?/
   validates_presence_of :wall_id
 
+  scope :sort_by_diff, order('difficulty.to_i')
+
   NULL_ATTRS = %w( color_one color_two color_three )
   before_save :nil_if_blank
 

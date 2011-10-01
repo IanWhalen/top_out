@@ -22,8 +22,14 @@ Feature: Manage Problems
 	Given The Beast has a problem with colors Black and difficulty V1-
 	When I go to the wall page for The Beast
 	Then I should see problems in the order Black, Blue
+	
+	Scenario: Sorting single digit problems with +/1
+	Given The Beast has a problem with colors Black and difficulty V3+
+	Given The Beast has a problem with colors White and difficulty V3-
+	When I go to the wall page for The Beast
+	Then I should see problems in the order White, Blue, Black
 
 	Scenario: Sorting two digit problems
 	Given The Beast has a problem with colors Neon Green and difficulty V10
 	When I go to the wall page for The Beast
-	Then I should see problems in the order Blue, Orange
+	Then I should see problems in the order Blue, Neon Green
