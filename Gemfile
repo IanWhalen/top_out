@@ -1,9 +1,7 @@
 source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 
-# Deploy with Capistrano
 gem 'capistrano'
-
 gem 'jquery-rails'
 gem 'hirb'
 gem 'devise'

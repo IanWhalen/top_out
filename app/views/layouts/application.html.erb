@@ -12,6 +12,11 @@
   <%= javascript_include_tag "application" %>
   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.js"></script>
   <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.js"></script>  
+
+  <script type="text/javascript">
+    $(function() { $('.inlinesparkline').sparkline('html', {type:'bar', barWidth:3, colorMap:["hsl(120,100%,40%)","hsl(113,100%,40%)", "hsl(106,100%,40%)", "hsl(99,100%,40%)", "hsl(92,100%,40%)", "hsl(85,100%,40%)", "hsl(78,100%,40%)", "hsl(71,100%,40%)", "hsl(64,100%,40%)", "hsl(57,100%,40%)", "hsl(50,100%,40%)", "hsl(43,100%,40%)", "hsl(36,100%,40%)", "hsl(29,100%,40%)", "hsl(22,100%,40%)", "hsl(15,100%,40%)", "hsl(8,100%,40%)"] })});
+  </script>
+
   <%= csrf_meta_tag %>
   
   <meta name="viewport" content="width=device-width, initial-scale=1">

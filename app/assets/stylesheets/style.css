@@ -77,6 +77,12 @@
 
 /* Other Styles (To Be Organized) */
 
+span.inlinesparkline {
+  float: left;
+  padding: 0.7em 0 0.7em 15px;
+  margin-right: -5px;
+}
+
 .ui-link {
   text-decoration: none!important;
 }

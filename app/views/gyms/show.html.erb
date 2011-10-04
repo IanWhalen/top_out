@@ -13,7 +13,10 @@
 
     <li data-role="list-divider">Bouldering Walls</li>
     <% @gym.walls.each do |wall| %>
-      <li> <%= link_to wall.name, wall %> </li>
+      <li>
+        <span class="inlinesparkline"><%= wall.sparkline_data %></span>
+        <%= link_to wall.name, wall %>
+      </li>
     <% end %>
   </ul>
 <% end %>
