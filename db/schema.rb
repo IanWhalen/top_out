@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110812192141) do
+ActiveRecord::Schema.define(:version => 20111003200604) do
 
   create_table "climbing_sessions", :force => true do |t|
     t.datetime "start"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20110812192141) do
     t.string   "color_two"
     t.string   "color_three"
     t.string   "difficulty"
-    t.boolean  "is_live"
+    t.boolean  "is_live",     :default => true
     t.integer  "wall_id"
     t.datetime "created_at"
     t.datetime "updated_at"
