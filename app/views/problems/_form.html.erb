@@ -24,10 +24,6 @@
     <%= f.text_field :difficulty, :id => 'difficulty', :placeholder => 'Difficulty' %>
   </div>
   <div class="field">
-    <%= f.label :is_live %>
-    <%= f.check_box :is_live %>
-  </div>
-  <div class="field">
     <%= f.collection_select :wall_id, @walls, :id, :gym_plus_wall_name, {:prompt => "Select a wall"}, {:id => "wall_select"} %>
   </div>
   <div class="actions">
