@@ -15,7 +15,7 @@
     <% @gym.walls.each do |wall| %>
       <li>
         <span class="inlinesparkline"><%= wall.sparkline_data %></span>
-        <%= link_to wall.name, wall %>
+        <%= link_to wall.name, wall, :"data-prefetch" => true %>
       </li>
     <% end %>
   </ul>
