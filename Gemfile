@@ -16,6 +16,7 @@ group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem "rspec-rails", ">= 2.6.1"
   gem "factory_girl_rails", ">= 1.1.0"
+  gem "selenium-webdriver", ">= 2.7.0"
   gem "cucumber-rails", ">= 1.0.2"
   gem "webrat"
   gem "capybara", ">= 1.0.0"
@@ -27,6 +28,7 @@ group :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem "rspec-rails", ">= 2.6.1"
   gem "factory_girl_rails", ">= 1.1.0"
+  gem "selenium-webdriver", ">= 2.7.0"
   gem "cucumber-rails", ">= 1.0.2"
   gem "webrat"
   gem "capybara", ">= 1.0.0"

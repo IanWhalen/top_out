@@ -1,4 +1,7 @@
 class GymsController < ApplicationController
+
+  caches_page :index
+
   # GET /gyms
   def index
     @gyms = Gym.all
@@ -26,6 +29,7 @@ class GymsController < ApplicationController
 
     respond_to do |format|
       if @gym.update_attributes(params[:gym])
+        expire_page :action => :index
         format.html { redirect_to(@gym, :notice => 'Gym was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -42,6 +46,7 @@ class GymsController < ApplicationController
     @gym.destroy
 
     respond_to do |format|
+      expire_page :action => :index
       format.html { redirect_to(gyms_url) }
       format.xml  { head :ok }
     end
