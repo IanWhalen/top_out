@@ -12,7 +12,7 @@
     <li> <%= link_to "Unsolved Problems",  %> </li>
 
     <li data-role="list-divider">Bouldering Walls</li>
-    <% @gym.walls.sort_by{|obj| obj.average_difficulty}.each do |wall| %>
+    <% @gym.live_wall_list.each do |wall| %>
       <li>
         <span class="inlinesparkline"><%= wall.sparkline_data %></span>
         <%= link_to wall.name, wall %>

@@ -9,7 +9,11 @@ class Wall < ActiveRecord::Base
 
   def average_difficulty
     @p = problems.where(:is_live => true)
-    @p.inject(0.0){|sum, i| sum + Difficulty.to_int(i.difficulty) } / @p.size
+    if @p.size > 0
+      @avg = @p.inject(0.0){|sum, i| sum + Difficulty.to_int(i.difficulty) } / @p.size
+    else
+      @avg = nil
+    end
   end
 
   def live_problems_sorted_by_diff
