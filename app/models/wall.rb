@@ -4,6 +4,13 @@ class Wall < ActiveRecord::Base
   has_many   :routes
   
   validates :name, :presence => true
+  
+  scope :sort_by_average_diff, order(:average_difficulty)
+
+  def average_difficulty
+    @p = problems.where(:is_live => true)
+    @p.inject(0.0){|sum, i| sum + Difficulty.to_int(i.difficulty) } / @p.size
+  end
 
   def live_problems_sorted_by_diff
     self.problems.all.sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
