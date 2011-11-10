@@ -28,7 +28,7 @@ Then /^I should be signed out$/ do
 end
 
 Then /^I should be signed in$/ do
-  step %{I should see "Signed in succesfully."}
+  step %{I should see "Signed in successfully."}
 end
 
 When /^I sign out$/ do

@@ -25,7 +25,6 @@ Feature: Sign in
 			Given a user exists with email "user@test.com" and password "password"
 			When I go to the sign in page
 			And I sign in as "user@test.com/password"
-			Then I should see "Signed in successfully."
-			And I should be signed in
+			Then I should be signed in
 			When I return next time
 			Then I should be already signed in
