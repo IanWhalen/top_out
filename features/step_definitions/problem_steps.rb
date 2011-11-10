@@ -36,6 +36,6 @@ Then /^I should see problems in the order (.+)$/ do |problems|
   @problem_list = problems.split(', ')
   @problem_list.each_with_index do |p, index|
     next_p = @problem_list[index+1]
-    return false unless page.html =~ /#{p}.*#{next_p}/m if not next_p.nil?
+    next unless page.html =~ /#{p}.*#{next_p}/m if not next_p.nil?
   end
 end

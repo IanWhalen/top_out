@@ -15,5 +15,5 @@ Then /^there is a wall named "(.*)"$/ do |wall_name|
 end
 
 When /^I return next time$/ do
-  And %{I go to the home page}
+  step %{I go to the home page}
 end

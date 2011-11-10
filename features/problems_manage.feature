@@ -1,3 +1,4 @@
+@javascript
 Feature: Manage Problems
 	In order to ...
 	As an ...
@@ -12,14 +13,14 @@ Feature: Manage Problems
 	And Brooklyn Boulders has walls named The Beast
 	And The Beast has a problem with colors Blue and difficulty V2
 
-	@javascript
+	# @culerity
 	Scenario: Clicking problem when not signed in
 	When I go to the wall page for The Beast
 	And I click the problem "Blue"
 	And I confirm the popup
 	Then I should see "Sign in"
 
-	@javascript
+	# @culerity
 	Scenario: Clicking problem when signed in
 	When I sign in as "user@test.com/password"
 	And I go to the wall page for The Beast
