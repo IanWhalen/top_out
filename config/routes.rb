@@ -6,7 +6,11 @@ TopOut::Application.routes.draw do
   resources :climbing_sessions
   resources :routes
   resources :problems
-  resources :walls
+  resources :walls do
+    member do
+      post 'clear'
+    end
+  end
   resources :gyms
   resources :home
 

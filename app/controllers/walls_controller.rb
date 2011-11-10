@@ -2,7 +2,7 @@ class WallsController < ApplicationController
   load_and_authorize_resource
   
   def show
-    @wall = Wall.find(params[:id], :include => :problems)
+    @wall = Wall.find(params[:id])
   end
 
   def new
@@ -24,8 +24,14 @@ class WallsController < ApplicationController
     end
   end
 
+  def clear
+    @wall = Wall.find(params[:id])
+    @wall.live_problems.update_all(:is_live => false)
+
+    redirect_to(gym_url(@wall.gym))
+  end
+
   # PUT /walls/1
-  # PUT /walls/1.xml
   def update
     @wall = Wall.find(params[:id])
 
@@ -41,7 +47,6 @@ class WallsController < ApplicationController
   end
 
   # DELETE /walls/1
-  # DELETE /walls/1.xml
   def destroy
     @wall = Wall.find(params[:id])
     @wall.destroy

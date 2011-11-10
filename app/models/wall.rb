@@ -1,6 +1,7 @@
 class Wall < ActiveRecord::Base
   belongs_to :gym
   has_many   :problems
+  has_many   :live_problems, :class_name => 'Problem', :conditions => ['is_live = ?', true]
   has_many   :routes
   
   validates :name, :presence => true
@@ -17,7 +18,7 @@ class Wall < ActiveRecord::Base
   end
 
   def live_problems_sorted_by_diff
-    self.problems.all.sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
+    self.live_problems.all.sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
   end
 
   def gym_plus_wall_name

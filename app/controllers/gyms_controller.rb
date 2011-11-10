@@ -1,35 +1,26 @@
 class GymsController < ApplicationController
-
-  caches_page :index
-
-  # GET /gyms
   def index
     @gyms = Gym.all
   end
 
-  # GET /gyms/1
   def show
     @gym = Gym.find(params[:id])
   end
 
-  # GET /gyms/new
   def new
     @gym = Gym.new
   end
 
-  # GET /gyms/1/edit
   def edit
     @gym = Gym.find(params[:id])
   end
 
   # PUT /gyms/1
-  # PUT /gyms/1.xml
   def update
     @gym = Gym.find(params[:id])
 
     respond_to do |format|
       if @gym.update_attributes(params[:gym])
-        expire_page :action => :index
         format.html { redirect_to(@gym, :notice => 'Gym was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -40,13 +31,11 @@ class GymsController < ApplicationController
   end
 
   # DELETE /gyms/1
-  # DELETE /gyms/1.xml
   def destroy
     @gym = Gym.find(params[:id])
     @gym.destroy
 
     respond_to do |format|
-      expire_page :action => :index
       format.html { redirect_to(gyms_url) }
       format.xml  { head :ok }
     end
