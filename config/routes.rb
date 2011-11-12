@@ -11,7 +11,11 @@ TopOut::Application.routes.draw do
       post 'clear'
     end
   end
-  resources :gyms
+  resources :gyms do
+    member do
+      get 'unsolved'
+    end
+  end
   resources :home
 
   root :to => "home#index"

@@ -8,4 +8,9 @@ class Gym < ActiveRecord::Base
     walls.sort_by {|obj| obj.average_difficulty || 100 }
   end
 
+  def all_live_problems
+    Problem.includes({:wall => :gym}).
+            where('problems.is_live IS ? AND gyms.id IS ?', true, self.id).
+            sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
+  end
 end

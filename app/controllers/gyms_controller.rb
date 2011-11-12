@@ -15,6 +15,10 @@ class GymsController < ApplicationController
     @gym = Gym.find(params[:id])
   end
 
+  def unsolved
+    @gym = Gym.find(params[:id])
+  end
+
   # PUT /gyms/1
   def update
     @gym = Gym.find(params[:id])

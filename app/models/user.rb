@@ -12,11 +12,16 @@ class User < ActiveRecord::Base
 
   # Finds the presence of last completed problem
   def last_completed_problem(problem)
-    completed_problems.order('created_at DESC').where(:completed_problems => {:problem_id => problem}).limit(1).first
+    completed_problems.order('created_at DESC').
+                       where(:completed_problems => {:problem_id => problem}).
+                       limit(1).
+                       first
   end
 
   def unsolved_problems(gym)
-    Problem.includes({:wall => :gym}, {:completed_problems => :user}).where('problems.is_live IS ? AND gyms.id IS ? AND users.id is not ?', true, gym.id, self.id).sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
+    Problem.includes({:wall => :gym}, {:completed_problems => :user}).
+            where('problems.is_live IS ? AND gyms.id IS ? AND users.id is not ?', true, gym.id, self.id).
+            sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
   end
 
   private
