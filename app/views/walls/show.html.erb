@@ -5,7 +5,7 @@
 <% content_for :content do %>
   <ul data-role="listview">
     <li data-role="list-divider"><%= @wall.name %></li>
-    <%= render :partial => 'problem', :collection => @wall.live_problems_sorted_by_diff %>
+    <%= render :partial => 'shared/problem', :collection => @wall.live_problems_sorted_by_diff %>
   <% if current_user.try(:admin?) %>
     <li>
     <%= link_to "Clear Wall (Admin Only)", clear_wall_url(@wall.id), :method => :post %>
