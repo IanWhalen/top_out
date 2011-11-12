@@ -27,10 +27,7 @@ class Problem < ActiveRecord::Base
   def last_complete_by_user(user)
     if not @user = user 
       @string = "Sign up now!"
-    elsif not @completed_problem = self.completed_problems.select("updated_at").
-                                                   where(:user_id => @user).
-                                                   order("updated_at ASC").
-                                                   last
+    elsif not @completed_problem = self.completed_problems.select("updated_at").where(:user_id => @user).order("updated_at ASC").last
       @time = @completed_problem.updated_at
       @string = time_ago_in_words(@time) + " ago"
     else
