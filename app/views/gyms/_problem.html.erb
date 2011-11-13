@@ -16,7 +16,7 @@
 
     <div class="problem_text">
       <h3><%= problem.name %></h3>
-      <p class="last_complete"><%= show_last_completed_problem_for_user(current_user, problem) %></p>
+      <p class="last_complete"><%= problem.wall.name %></p>
     </div>
     
     <p class="ui-li-aside difficulty"><strong><%= problem.difficulty %></strong></p>
