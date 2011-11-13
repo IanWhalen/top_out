@@ -1,0 +1,45 @@
+<li data-icon="check">
+<%= link_to '', :confirm => "Just climbed the #{problem.name} problem?", :remote => true, :id => "problem_#{problem.id}", :style => 'padding-left: 10px; padding-right: 40px' do %>
+
+    <div class="problem_colors"> 
+    <% if problem.color_three %>
+      <div class="problem_stripe" style="width: 34%; background: <%= Color::CHOICES[problem.color_one]["hex"] %>;"></div>
+      <div class="problem_stripe" style="width: 34%; background: <%= Color::CHOICES[problem.color_two]["hex"] %>;"></div>
+      <div class="problem_stripe" style="width: 34%; background: <%= Color::CHOICES[problem.color_three]["hex"] %>;"></div>
+    <% elsif problem.color_two %>
+      <div class="problem_stripe" style="width: 50%; background: <%= Color::CHOICES[problem.color_one]["hex"] %>;"></div>
+      <div class="problem_stripe" style="width: 50%; background: <%= Color::CHOICES[problem.color_two]["hex"] %>;"></div>
+    <% else %>
+      <div class="problem_stripe" style="width: 100%; background: <%= Color::CHOICES[problem.color_one]["hex"] %>;"></div>
+    <% end %>
+    </div>
+
+    <div class="problem_text">
+      <h3><%= problem.name %></h3>
+      <p class="last_complete"><%= show_last_completed_problem_for_user(current_user, problem) %></p>
+    </div>
+    
+    <p class="ui-li-aside difficulty"><strong><%= problem.difficulty %></strong></p>
+  
+<% end %>
+
+<script type="text/javascript">
+  $(<%= "'#problem_#{problem.id}'" %>).live('click', function () {
+    $.ajax({
+      type: 'POST',
+      data: { problem_id: <%= problem.id %>},
+      success: function(response){
+        if (response.sign_in_needed) {
+          $.mobile.changePage(response.sign_in_needed, "slide", false, true);
+        } else {
+          $(<%= "'#problem_#{problem.id}'" %>).find('.last_complete').text("Nice job!");
+        }
+      },
+      error: function(response){
+      },
+      url: '/completed_problems.json'
+      });
+    });
+</script>    
+
+</li>

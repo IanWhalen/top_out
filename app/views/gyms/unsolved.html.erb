@@ -6,9 +6,9 @@
   <ul data-role="listview">
     <li data-role="list-divider">Unsolved Problems</li>
     <% if current_user %>
-      <%= render :partial => 'shared/problem', :collection => current_user.unsolved_problems(@gym) %>
+      <%= render :partial => 'problem', :collection => current_user.unsolved_problems(@gym) %>
     <% else %>
-      <%= render :partial => 'shared/problem', :collection => @gym.all_live_problems %>
+      <%= render :partial => 'problem', :collection => @gym.all_live_problems %>
     <% end %>
   </ul>
 <% end %>
