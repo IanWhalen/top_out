@@ -1,5 +1,6 @@
 <% content_for :content do %>
   <ul data-role="listview">
+    <li data-role="list-divider">Available Gyms</li>
     <% @gyms.each do |gym| %>
       <li> <%= link_to gym.name, gym, :"data-prefetch" => true %> </li>
     <% end %>
