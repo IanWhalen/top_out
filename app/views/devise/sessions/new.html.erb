@@ -1,4 +1,5 @@
 <% content_for :content do %>
+  <div data-role="content">
   <h4 id="account-manage-title">Sign in now!</h4>
   <p>Just type in your email and password below so you can start tracking your climbing.</p>
   
@@ -20,5 +21,6 @@
 <p><%= link_to "Sign up", new_registration_path(resource_name) %> if you don't have any account.</p>
 
 <p>Forgot your password? <%= link_to "Reset it here.", new_password_path(resource_name) %><br/></p>
+</div>
 
 <% end %>

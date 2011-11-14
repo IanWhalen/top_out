@@ -1,10 +1,13 @@
-<ul data-role="listview">
+<div data-role="content">
+  <h2><%= current_user.email %></h2>
+</div>
 
-  <li><%= link_to 'Find your local climbing gym', gyms_path, :"data-prefetch" => true %></li>
-
-  <% if current_user.try(:admin?) %>
-    <li><%= link_to 'Add a new problem (Admin only)', new_problem_path %></li>
-    <li><%= link_to 'Add a new wall (Admin only)', new_wall_path %></li>
-  <% end %>
-
-</ul>
+<div data-role="content">
+  <ul data-role="listview">
+    <li><%= link_to 'Start climbing', gyms_path, :"data-prefetch" => true %></li>
+    <% if current_user.try(:admin?) %>
+      <li><%= link_to 'Add a new problem (Admin only)', new_problem_path %></li>
+      <li><%= link_to 'Add a new wall (Admin only)', new_wall_path %></li>
+    <% end %>
+  </ul>
+</div>
