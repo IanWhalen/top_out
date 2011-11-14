@@ -35,15 +35,17 @@
       <%= yield :navbar %>
     </div>
 
+    <% if not flash.empty? %>
     <div data-role="content">
-      <% if not flash.empty? %>
-        <ul>
-        <%- flash.each do |name, msg| -%>
-          <%= content_tag :li, msg, :id => "flash_#{name}", :"data-role" => "list-divider" if msg.is_a?(String) %>
-        <%- end -%>
+        <ul class="ui-listview" data-role="listview">
+          <%- flash.each do |name, msg| -%>
+            <%= content_tag :li, msg, :id => "flash_#{name}", :class => "ui-bar-e", :"data-role" => "list-divider" if msg.is_a?(String) %>
+          <%- end -%>
         </ul>
-      <% end %>
-      
+    </div>
+    <% end %>
+
+    <div data-role="content">
       <%= yield :content %>
     </div>
 
