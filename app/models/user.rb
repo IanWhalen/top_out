@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   def total_problems_solved
-    Problem.includes({:completed_problems => :user}).where('users.id is ?', self.id).count
+    Problem.includes({:completed_problems => :user}).where('users.id = ?', self.id).count
   end
 
   def last_gym
