@@ -1,5 +1,20 @@
 <div data-role="content">
-  <h2><%= current_user.email %></h2>
+  <h3><%= current_user.email %></h3>
+
+  <div class="ui-body-d ui-body" data-role="navbar">
+    <ul>
+      <li>
+        <div style="text-align:center; clear:both;"><span>1000</span></div>
+        <div style="text-align:center; clear:both;"><span>problems</span></div>
+      </li>
+      <li><div style="text-align:center;">1000</div></li>
+      <li><div style="text-align:center;">1000</div></li>
+      <li><div style="text-align:center;">1000</div></li>
+    </ul>
+  </div><!-- /navbar -->
+
+  <p>Problems solved: <%= current_user.total_problems_solved %>
+  <%= link_to "Last gym", current_user.last_gym if current_user.last_gym %>
 </div>
 
 <div data-role="content">

@@ -15,12 +15,11 @@ class User < ActiveRecord::Base
   end
 
   def last_gym
-    completed_problems.order('created_at DESC').
-                       limit(1).
-                       first.
-                       problem.
-                       wall.
-                       gym
+    begin
+      completed_problems.order('created_at DESC').limit(1).first.problem.wall.gym
+    rescue
+      nil
+    end
   end
 
   # Finds the presence of last completed problem
@@ -32,9 +31,8 @@ class User < ActiveRecord::Base
   end
 
   def unsolved_problems(gym)
-    Problem.includes({:wall => :gym}, {:completed_problems => :user}).
-            where('problems.is_live = ? AND gyms.id = ? AND (users.id != ? OR users.id is null)', true, gym.id, self.id).
-            sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
+    Problem.includes({:wall => :gym}, :completed_problems).
+      where('problems.is_live = ? AND gyms.id = ? AND (completed_problems.user_id != ? OR completed_problems.user_id IS NULL)', true, gym.id, self.id)
   end
 
   private

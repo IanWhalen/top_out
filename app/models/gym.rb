@@ -9,8 +9,6 @@ class Gym < ActiveRecord::Base
   end
 
   def all_live_problems
-    Problem.includes({:wall => :gym}).
-            where('problems.is_live = ? AND gyms.id = ?', true, self.id).
-            sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
+    Problem.includes({:wall => :gym}).where('problems.is_live = ? AND gyms.id = ?', true, self.id)
   end
 end
