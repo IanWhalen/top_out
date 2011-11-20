@@ -32,7 +32,7 @@
         if (response.sign_in_needed) {
           $.mobile.changePage(response.sign_in_needed, "slide", false, true);
         } else {
-          $(<%= "'#problem_#{problem.id}'" %>).find('.last_complete').text("Nice job!");
+          window.location.replace("<%= request.fullpath %>")
         }
       },
       error: function(response){
