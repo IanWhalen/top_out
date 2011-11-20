@@ -5,8 +5,8 @@ TopOut::Application.routes.draw do
   resources :completed_problems
   resources :climbing_sessions
   resources :routes
-  resources :problems
   resources :walls do
+    resources :problems
     member do
       post 'clear'
     end

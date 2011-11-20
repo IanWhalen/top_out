@@ -3,7 +3,7 @@ class ProblemsController < ApplicationController
 
   def new
     @problem = Problem.new(:is_live => true)
-    @walls = Wall.all
+    @wall = Wall.find(params[:wall_id])
     @colors = Color::CHOICES
   end
 
@@ -13,9 +13,10 @@ class ProblemsController < ApplicationController
 
   def create
     @problem = Problem.new(params[:problem])
+    @problem.wall_id = params[:wall_id]
 
     if @problem.save
-      redirect_to(new_problem_path, :notice => 'Problem was successfully created.')
+      redirect_to(new_wall_problem_path(params[:wall_id]), :notice => 'Problem was successfully created.')
     else
       render :action => "new"
     end

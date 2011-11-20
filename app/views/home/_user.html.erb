@@ -28,7 +28,6 @@
     <li><%= link_to "Last seen at #{current_user.last_gym.name}", current_user.last_gym if current_user.last_gym %></li>
     <li><%= link_to 'Find a nearby gym', gyms_path, :"data-prefetch" => true %></li>
     <% if current_user.try(:admin?) %>
-      <li><%= link_to 'Add a new problem (Admin only)', new_problem_path %></li>
       <li><%= link_to 'Add a new wall (Admin only)', new_wall_path %></li>
     <% end %>
   </ul>
