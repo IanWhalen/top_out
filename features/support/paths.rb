@@ -18,7 +18,8 @@ module NavigationHelpers
       new_user_registration_path
     when /^the sign in page$/
       new_user_session_path
-
+    when /^the new problem page for (.+)$/
+      new_wall_problem_path(Wall.find_by_name($1))
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

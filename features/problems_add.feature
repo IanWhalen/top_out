@@ -12,47 +12,44 @@ Feature: Add Problems
 		
 		Scenario: Going to Create Problems page as normal user
 			When I sign in as "user@test.com/password"
-			And I go to the new problem page
+			And I go to the new problem page for The Beast
 			Then I should be on the home page
 			And I should see "You are not authorized to access this page"
 
 		Scenario: Going to Create Problems page as admin user
 			When I sign in as "admin@test.com/password"
-			And I go to the new problem page
-			Then I should be on the new problem page
+			And I go to the new problem page for The Beast
+			Then I should be on the new problem page for The Beast
 
 		Scenario: Create single color problem
 			When I sign in as "admin@test.com/password"
-			And I go to the new problem page
+			And I go to the new problem page for The Beast
 			When I select "Blue" from "problem_color_one"
 			And I fill in "difficulty" with "V0"
-			And I select "Brooklyn Boulders - The Beast" from "wall_select"
 			And I press "Create Problem"
-			Then I should be on the new problem page
+			Then I should be on the new problem page for The Beast
 			And there is a "V0" problem with colors "Blue" on wall "The Beast"
 			And there is a problem named "Blue"
 				
 		Scenario: Create two color problem
 			When I sign in as "admin@test.com/password"
-			And I go to the new problem page
+			And I go to the new problem page for The Beast
 			When I select "Blue" from "problem_color_one"
 			When I select "White" from "problem_color_two"
 			And I fill in "difficulty" with "V0"
-			And I select "Brooklyn Boulders - The Beast" from "wall_select"
 			And I press "Create Problem"
-			Then I should be on the new problem page
+			Then I should be on the new problem page for The Beast
 			And there is a "V0" problem with colors "Blue, White" on wall "The Beast"
 			And there is a problem named "Blue & White"
 				
 		Scenario: Create three color problem
 			When I sign in as "admin@test.com/password"
-			And I go to the new problem page
+			And I go to the new problem page for The Beast
 			When I select "Blue" from "problem_color_one"
 			When I select "Neon Green" from "problem_color_two"
 			When I select "Black" from "problem_color_three"
 			And I fill in "difficulty" with "V0"
-			And I select "Brooklyn Boulders - The Beast" from "wall_select"
 			And I press "Create Problem"
-			Then I should be on the new problem page
+			Then I should be on the new problem page for The Beast
 			And there is a "V0" problem with colors "Blue, Neon Green, Black" on wall "The Beast"
 			And there is a problem named "Blue, Neon Green & Black"
