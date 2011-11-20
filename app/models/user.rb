@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   def unsolved_problems(gym)
     Problem.includes({:wall => :gym}, {:completed_problems => :user}).
-            where('problems.is_live = ? AND gyms.id = ? AND users.id != ?', true, gym.id, self.id).
+            where('problems.is_live = ? AND gyms.id = ? AND (users.id != ? OR users.id is null)', true, gym.id, self.id).
             sort {|a,b| Difficulty.to_int(a.difficulty) <=> Difficulty.to_int(b.difficulty)}
   end
 
