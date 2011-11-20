@@ -71,7 +71,11 @@
 }
 
 #home-title {
-  margin: 9px 0px 12px 15px;
+  margin: 3px 0px 6px 15px;
+  text-decoration: none!important;
+  color: #FFF;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 32px;
 }
 
 #home-tagline {
@@ -80,6 +84,12 @@
 
 
 /* Other Styles (To Be Organized) */
+
+span.inlinesparkline {
+  float: left;
+  padding: 0.7em 0 0.7em 15px;
+  margin-right: -5px;
+}
 
 .ui-link {
   text-decoration: none!important;
@@ -110,4 +120,20 @@
 .problem_stripe {
   float: left;
   height: 100%;
+}
+
+.user-home.stats {
+  text-align: center;
+  clear: both;
+}
+
+.user-home.text {
+  font-size: 14px;
+  color: #999999;
+}
+
+.user-home.number {
+  font-weight: bold;
+  font-size: 18px;
+  color: #555555;
 }
