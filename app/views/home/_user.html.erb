@@ -1,25 +1,32 @@
 <div data-role="content">
-  <h3><%= current_user.email %></h3>
+  <h4><%= current_user.email %></h4>
 
   <div class="ui-body-d ui-body" data-role="navbar">
     <ul>
       <li>
-        <div style="text-align:center; clear:both;"><span>1000</span></div>
-        <div style="text-align:center; clear:both;"><span>problems</span></div>
+        <div class="user-home stats number"><span><%= current_user.total_problems_solved %></span></div>
+        <div class="user-home stats text"><span>problems</span></div>
       </li>
-      <li><div style="text-align:center;">1000</div></li>
-      <li><div style="text-align:center;">1000</div></li>
-      <li><div style="text-align:center;">1000</div></li>
+      <li>
+        <div class="user-home stats number"><span>0</span></div>
+        <div class="user-home stats text"><span>routes</span></div>
+      </li>
+      <li>
+        <div class="user-home stats number"><span>1</span></div>
+        <div class="user-home stats text"><span>gyms</span></div>
+      </li>
+      <li>
+        <div class="user-home stats number"><span>0<span></div>
+        <div class="user-home stats text"><span>feet</span></div>
+      </li>
     </ul>
   </div><!-- /navbar -->
-
-  <p>Problems solved: <%= current_user.total_problems_solved %>
-  <%= link_to "Last gym", current_user.last_gym if current_user.last_gym %>
 </div>
 
 <div data-role="content">
   <ul data-role="listview">
-    <li><%= link_to 'Start climbing', gyms_path, :"data-prefetch" => true %></li>
+    <li><%= link_to "Last seen at #{current_user.last_gym.name}", current_user.last_gym if current_user.last_gym %></li>
+    <li><%= link_to 'Find a nearby gym', gyms_path, :"data-prefetch" => true %></li>
     <% if current_user.try(:admin?) %>
       <li><%= link_to 'Add a new problem (Admin only)', new_problem_path %></li>
       <li><%= link_to 'Add a new wall (Admin only)', new_wall_path %></li>

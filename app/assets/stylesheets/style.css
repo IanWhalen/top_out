@@ -113,3 +113,19 @@ span.inlinesparkline {
   float: left;
   height: 100%;
 }
+
+.user-home.stats {
+  text-align: center;
+  clear: both;
+}
+
+.user-home.text {
+  font-size: 14px;
+  color: #999999;
+}
+
+.user-home.number {
+  font-weight: bold;
+  font-size: 18px;
+  color: #555555;
+}
