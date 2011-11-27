@@ -5,7 +5,11 @@
 <% content_for :content do %>
   <div data-role="content">
   <ul data-role="listview">
-    <li><%= link_to 'Add a new problem (Admin only)', new_wall_problem_path(@wall) %></li>
+    
+    <% if current_user.try(:admin?) %>
+      <li><%= link_to 'Add a new problem (Admin only)', new_wall_problem_path(@wall) %></li>
+    <% end %>
+
     <li data-role="list-divider"><%= @wall.name %></li>
     <%= render :partial => 'problem', :collection => @wall.live_problems.sort %>
   <% if current_user.try(:admin?) %>
