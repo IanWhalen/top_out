@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+CompletedProblem.delete_all
 
 Gym.delete_all
 @gym = Gym.create(:name => 'Brooklyn Boulders')
