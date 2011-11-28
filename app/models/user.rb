@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 
   def unsolved_problems(gym)
     Problem.includes({:wall => :gym}, :completed_problems).
-      where('problems.is_live = ? AND gyms.id = ? AND (completed_problems.user_id != ? OR completed_problems.user_id IS NULL)', true, gym.id, self.id)
+      where('problems.is_live = ? AND gyms.id = ? AND problems.id NOT IN (select problem_id from completed_problems where user_id = ?)', true, gym.id, self.id)
   end
 
   private
