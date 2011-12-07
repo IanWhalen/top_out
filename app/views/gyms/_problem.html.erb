@@ -32,7 +32,7 @@
         if (response.sign_in_needed) {
           $.mobile.changePage(response.sign_in_needed, "slide", false, true);
         } else {
-          window.location.replace("<%= request.fullpath %>")
+        $(<%= "'#problem_#{problem.id}'" %>).closest('li').remove();
         }
       },
       error: function(response){
