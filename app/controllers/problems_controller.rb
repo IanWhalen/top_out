@@ -16,7 +16,7 @@ class ProblemsController < ApplicationController
     @problem.wall_id = params[:wall_id]
 
     if @problem.save
-      redirect_to(new_wall_problem_path(params[:wall_id]), :notice => 'Problem was successfully created.')
+      redirect_to(new_wall_problem_path(params[:wall_id]), :notice => "#{@problem.name} #{@problem.difficulty} problem was successfully created.")
     else
       render :action => "new"
     end
