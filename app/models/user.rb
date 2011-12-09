@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :completed_problems
   has_many :problems, :through => :completed_problems
+  has_many :climbing_sessions
 
   after_create :send_welcome_email
 
