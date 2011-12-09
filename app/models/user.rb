@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     last_completion.try(:gym)
   end
 
-  def most_recent_climbing_session
+  def latest_climbing_session
     last_completion.try(:climbing_session)
   end
 
