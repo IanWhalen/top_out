@@ -16,7 +16,9 @@
 
     <div class="problem_text">
       <h3><%= problem.name %></h3>
-      <p class="last_complete"><%= show_last_completed_problem_for_user(current_user, problem) %></p>
+      <% if current_user && current_user.time_of_last_completion_of_problem(problem) %>
+        <p class="last_complete"><%= "#{time_ago_in_words(current_user.time_of_last_completion_of_problem(problem))} ago" %></p>
+      <% end %>
     </div>
     
     <p class="ui-li-aside difficulty"><strong><%= problem.difficulty %></strong></p>

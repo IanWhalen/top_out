@@ -20,11 +20,6 @@ class User < ActiveRecord::Base
     completed_problems.try(:first)
   end
 
-  # Find user's most recent CompletedProblem for a given Problem
-  def last_completed_problem(problem)
-    completed_problems.where(:completed_problems => {:problem_id => problem}).first
-  end
-
   def time_of_last_completion
     last_completion.try(:updated_at)
   end
@@ -35,6 +30,15 @@ class User < ActiveRecord::Base
 
   def latest_climbing_session
     last_completion.try(:climbing_session)
+  end
+  
+  # Find user's most recent CompletedProblem for a given Problem
+  def last_completion_of_problem(problem)
+    completed_problems.where(:completed_problems => {:problem_id => problem}).first
+  end
+
+  def time_of_last_completion_of_problem(problem)
+    last_completion_of_problem(problem).try(:updated_at)
   end
 
   # Finds all live problems at a given gym which the user has not yet completed
