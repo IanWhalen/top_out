@@ -1,6 +1,5 @@
 class ClimbingSessionsController < ApplicationController
   # GET /climbing_sessions
-  # GET /climbing_sessions.xml
   def index
     @climbing_sessions = ClimbingSession.all
 
@@ -11,7 +10,6 @@ class ClimbingSessionsController < ApplicationController
   end
 
   # GET /climbing_sessions/1
-  # GET /climbing_sessions/1.xml
   def show
     @climbing_session = ClimbingSession.find(params[:id])
 
@@ -22,7 +20,6 @@ class ClimbingSessionsController < ApplicationController
   end
 
   # GET /climbing_sessions/new
-  # GET /climbing_sessions/new.xml
   def new
     @climbing_session = ClimbingSession.new
 
@@ -38,7 +35,6 @@ class ClimbingSessionsController < ApplicationController
   end
 
   # POST /climbing_sessions
-  # POST /climbing_sessions.xml
   def create
     @climbing_session = ClimbingSession.new(params[:climbing_session])
 
@@ -54,7 +50,6 @@ class ClimbingSessionsController < ApplicationController
   end
 
   # PUT /climbing_sessions/1
-  # PUT /climbing_sessions/1.xml
   def update
     @climbing_session = ClimbingSession.find(params[:id])
 
@@ -70,7 +65,6 @@ class ClimbingSessionsController < ApplicationController
   end
 
   # DELETE /climbing_sessions/1
-  # DELETE /climbing_sessions/1.xml
   def destroy
     @climbing_session = ClimbingSession.find(params[:id])
     @climbing_session.destroy
