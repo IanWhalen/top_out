@@ -1,6 +1,5 @@
 class CompletedProblemsController < ApplicationController
   # GET /completed_problems/new
-  # GET /completed_problems/new.xml
   def new
     @completed_problem = CompletedProblem.new
 
@@ -11,7 +10,6 @@ class CompletedProblemsController < ApplicationController
   end
 
   # POST /completed_problems
-  # POST /completed_problems.xml
   def create
     @problem = Problem.find(params[:problem_id])
     @completed_problem = @problem.completed_problems.build
@@ -27,7 +25,6 @@ class CompletedProblemsController < ApplicationController
   end
 
   # PUT /completed_problems/1
-  # PUT /completed_problems/1.xml
   def update
     @completed_problem = CompletedProblem.find(params[:id])
 
@@ -43,7 +40,6 @@ class CompletedProblemsController < ApplicationController
   end
 
   # DELETE /completed_problems/1
-  # DELETE /completed_problems/1.xml
   def destroy
     @completed_problem = CompletedProblem.find(params[:id])
     @completed_problem.destroy

@@ -23,7 +23,6 @@ class ProblemsController < ApplicationController
   end
 
   # PUT /problems/1
-  # PUT /problems/1.xml
   def update
     @problem = Problem.find(params[:id])
 
@@ -39,7 +38,6 @@ class ProblemsController < ApplicationController
   end
 
   # DELETE /problems/1
-  # DELETE /problems/1.xml
   def destroy
     @problem = Problem.find(params[:id])
     @problem.destroy
