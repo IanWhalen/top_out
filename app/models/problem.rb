@@ -2,6 +2,7 @@ class Problem < ActiveRecord::Base
   belongs_to :wall
   has_many :completed_problems
   has_many :users, :through => :completed_problems
+  has_one :gym, :through => :wall
 
   validates_inclusion_of :color_one, :color_two, :color_three, :in => Color::CHOICES, :allow_blank => true
   validates_format_of :difficulty, :with => /^V\d+[\+\-]?/

@@ -15,22 +15,29 @@ class User < ActiveRecord::Base
     Problem.includes({:completed_problems => :user}).where('users.id = ?', self.id).count
   end
 
-  def last_gym
-    begin
-      completed_problems.order('created_at DESC').limit(1).first.problem.wall.gym
-    rescue
-      nil
-    end
+  # Find user's most recent CompletedProblem
+  def last_completion
+    completed_problems.try(:first)
   end
 
-  # Finds the presence of last completed problem
+  # Find user's most recent CompletedProblem for a given Problem
   def last_completed_problem(problem)
-    completed_problems.order('created_at DESC').
-                       where(:completed_problems => {:problem_id => problem}).
-                       limit(1).
-                       first
+    completed_problems.where(:completed_problems => {:problem_id => problem}).first
   end
 
+  def time_of_last_completion
+    last_completion.try(:updated_at)
+  end
+
+  def gym_of_last_completion
+    last_completion.try(:gym)
+  end
+
+  def most_recent_climbing_session
+    last_completion.try(:climbing_session)
+  end
+
+  # Finds all live problems at a given gym which the user has not yet completed
   def unsolved_problems(gym)
     Problem.includes({:wall => :gym}, :completed_problems).
       where('problems.is_live = ? AND gyms.id = ? AND problems.id NOT IN (select problem_id from completed_problems where user_id = ?)', true, gym.id, self.id)
