@@ -25,10 +25,16 @@
 
 <div data-role="content">
   <ul data-role="listview">
-    <li><%= link_to "Last seen at #{current_user.gym_of_last_completion.name}", current_user.gym_of_last_completion unless current_user.gym_of_last_completion.nil? %></li>
+    
+    <% unless @latest_gym.nil? %>
+      <li><%= link_to "Last seen at #{@latest_gym.name}", @latest_gym %></li>
+    <% end %>  
+    
     <li><%= link_to 'Find a nearby gym', gyms_path, :"data-prefetch" => true %></li>
+    
     <% if current_user.try(:admin?) %>
       <li><%= link_to 'Add a new wall (Admin only)', new_wall_path %></li>
     <% end %>
+  
   </ul>
 </div>
