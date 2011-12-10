@@ -17,8 +17,7 @@ class CompletedProblemsController < ApplicationController
       @problem = Problem.find(params[:problem_id])
       @completed_problem = @problem.completed_problems.build
       @completed_problem.user = current_user
-
-      create_or_update_climbing_session(current_user, @completed_problem)
+      @completed_problem.create_or_update_climbing_session(current_user)
 
       if @completed_problem.save
         render :json => { }
@@ -26,22 +25,7 @@ class CompletedProblemsController < ApplicationController
         render :json => { :location => root_url, :notice => 'No idea what happened there.' }
       end
   
-      private
-
-      def create_or_update_climbing_session(user, completion)
-        # Append to existing ClimbingSession if user completed anything in past 3 hours
-        if user.time_of_last_completion && completion.updated_at - user.time_of_last_completion < 10800
-          completion.climbing_session = user.latest_climbing_session
-          completion.climbing_session.finish = completion.updated_at
-        # If not then create a new ClimbingSession
-        else
-          completion.climbing_session = ClimbingSession.create!(:user => user)
-          completion.climbing_session.start = completion.updated_at
-          completion.climbing_session.finish = completion.updated_at + 5.minutes
-        end
-        completion.climbing_session.save
-      end
-    
+    end 
   end
 
   # PUT /completed_problems/1
