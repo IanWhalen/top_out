@@ -1,5 +1,5 @@
 <li data-icon="check">
-<%= link_to '', :confirm => "Just climbed the #{problem.name} problem?", :remote => true, :id => "problem_#{problem.id}", :style => 'padding-left: 10px; padding-right: 40px' do %>
+<%= link_to '', :confirm => "Just climbed the #{problem.name} problem?", :remote => true, :id => "unsolved_problem_#{problem.id}", :style => 'padding-left: 10px; padding-right: 40px' do %>
 
     <div class="problem_colors"> 
     <% if problem.color_three %>
@@ -24,7 +24,7 @@
 <% end %>
 
 <script type="text/javascript">
-  $(<%= "'#problem_#{problem.id}'" %>).live('click', function () {
+  $(<%= "'#unsolved_problem_#{problem.id}'" %>).live('click', function () {
     $.ajax({
       type: 'POST',
       data: { problem_id: <%= problem.id %>},
@@ -32,7 +32,7 @@
         if (response.sign_in_needed) {
           $.mobile.changePage(response.sign_in_needed, "slide", false, true);
         } else {
-        $(<%= "'#problem_#{problem.id}'" %>).closest('li').remove();
+        $(<%= "'#unsolved_problem_#{problem.id}'" %>).closest('li').remove();
         }
       },
       error: function(response){
