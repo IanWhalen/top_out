@@ -27,6 +27,7 @@
 
 <script type="text/javascript">
   $(<%= "'#problem_#{problem.id}'" %>).live('click', function () {
+  $(<%= "'#problem_#{problem.id}'" %>).live('vclick', function () {
     $.ajax({
       type: 'POST',
       data: { problem_id: <%= problem.id %>},
