@@ -7,3 +7,6 @@
 // //= require jquery.min
 // //= require jquery_ujs
 // //= require jquery.sparkline.min
+$(document).bind("mobileinit", function(){
+  $.mobile.linkBindingEnabled = false;
+});
