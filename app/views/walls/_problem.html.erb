@@ -1,5 +1,15 @@
 <li data-icon="check">
-<%= link_to '', :confirm => "Just climbed the #{problem.name} problem?", :remote => true, :id => "problem_#{problem.id}", :style => 'padding-left: 10px; padding-right: 40px' do %>
+<%= link_to(
+  url_for(
+    :controller => 'completed_problems',
+    :action => 'create',
+    :problem_id => "#{problem.id}"),
+  {:class => "wall_problem",
+  :id => "problem_#{problem.id}",
+  :confirm => "Climbed it?",
+  :remote => true,
+  :"data-type" => "json",
+  :method => "POST"}) do %>
 
     <div class="problem_colors"> 
     <% if problem.color_three %>
@@ -16,33 +26,11 @@
 
     <div class="problem_text">
       <h3><%= problem.name %></h3>
-      <% if current_user && current_user.time_of_last_completion_of_problem(problem) %>
-        <p class="last_complete"><%= "#{time_ago_in_words(current_user.time_of_last_completion_of_problem(problem))} ago" %></p>
-      <% end %>
       <p class="last_complete"><%= "#{time_ago_in_words(current_user.time_of_last_completion_of_problem(problem))} ago" if current_user && current_user.time_of_last_completion_of_problem(problem) %></p>
     </div>
     
     <p class="ui-li-aside difficulty"><strong><%= problem.difficulty %></strong></p>
   
 <% end %>
-
-<script type="text/javascript">
-  $(<%= "'#problem_#{problem.id}'" %>).live('vclick', function () {
-    $.ajax({
-      type: 'POST',
-      data: { problem_id: <%= problem.id %>},
-      success: function(response){
-        if (response.sign_in_needed) {
-          $.mobile.changePage(response.sign_in_needed, "slide", false, true);
-        } else {
-          $(<%= "'#problem_#{problem.id}'" %>).find('.last_complete').text("Nice job!");
-        }
-      },
-      error: function(response){
-      },
-      url: '/completed_problems.json'
-      });
-    });
-</script>    
 
 </li>

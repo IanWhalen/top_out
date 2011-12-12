@@ -19,8 +19,8 @@ class CompletedProblemsController < ApplicationController
       @completed_problem.user = current_user
       @completed_problem.create_or_update_climbing_session(current_user)
 
-      if @completed_problem.save
-        render :json => { }
+      if @completed_problem.save && request.xhr?
+        render :json => { :problem_id => @completed_problem.problem_id }
       else
         render :json => { :location => root_url, :notice => 'No idea what happened there.' }
       end
