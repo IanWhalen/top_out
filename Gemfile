@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'hirb'
 gem 'devise'
 gem 'cancan'
+gem 'omniauth-facebook'
 
 group :production do
   gem 'mysql'
