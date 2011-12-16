@@ -20,6 +20,8 @@
   <br/>
 <% end %>
 
+<%= link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook) %>
+
 <p>Have an account? <%= link_to "Sign in here!", new_session_path(resource_name) %></p>
 </div>
 <% end %>
