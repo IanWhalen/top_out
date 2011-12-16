@@ -6,7 +6,7 @@
     :problem_id => "#{problem.id}"),
   {:class => "wall_problem",
   :id => "problem_#{problem.id}",
-  :confirm => "Climbed it?",
+  :confirm => "Just climbed the #{problem.name} problem?",
   :remote => true,
   :"data-type" => "json",
   :method => "POST"}) do %>
