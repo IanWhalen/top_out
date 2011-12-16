@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  # Also :token_authenticatable, :confirmable, :encryptable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  # Also :token_authenticatable, :confirmable, :encryptable, :lockable, and :timeoutable
+  devise :database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
@@ -9,6 +9,20 @@ class User < ActiveRecord::Base
   has_many :climbing_sessions
 
   after_create :send_welcome_email
+
+  
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token.extra.raw_info
+    if user = User.find_by_email(data.email)
+      user
+    else # Create a user with a stub password
+      User.create!(:email => data.email, :password => Devise.friendly_token[0,20])
+    end
+  end
+
+  def latest_climbing_session
+    climbing_sessions.try(:last)
+  end
 
   def total_problems_solved
     Problem.includes({:completed_problems => :user}).where('users.id = ?', self.id).count
