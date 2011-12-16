@@ -1,6 +1,29 @@
-<div data-role="content">
-  <h4><%= current_user.email %></h4>
+<div id="fb-root"></div>
+<script src="//connect.facebook.net/en_US/all.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '138283156235665', // App ID
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
 
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+</script>
+
+<div data-role="content">
+  <p class="user-home heading">Your Stats</p>
   <div class="ui-body-d ui-body" data-role="navbar">
     <ul>
       <li>
@@ -21,6 +44,42 @@
       </li>
     </ul>
   </div><!-- /navbar -->
+  
+  <% if @latest_session %>
+  <p class="user-home heading">Your Last Climbs</p>
+  <span class="session-sparkline"><%= @latest_session.sparkline_data %></span>
+  <script type="text/javascript">
+    $(function() { 
+      $('.session-sparkline').sparkline('html', {
+        type:'bar', barWidth:16, colorMap:["hsl(120,100%,40%)","hsl(113,100%,40%)", "hsl(106,100%,40%)", "hsl(99,100%,40%)", "hsl(92,100%,40%)", "hsl(85,100%,40%)", "hsl(78,100%,40%)", "hsl(71,100%,40%)", "hsl(64,100%,40%)", "hsl(57,100%,40%)", "hsl(50,100%,40%)", "hsl(43,100%,40%)", "hsl(36,100%,40%)", "hsl(29,100%,40%)", "hsl(22,100%,40%)", "hsl(15,100%,40%)", "hsl(8,100%,40%)"]
+      });
+    });
+
+    $('#mainPage').live('pageshow', function() {
+      // Go ahead and draw the now-visible sparkline tags
+      $.sparkline_display_visible();
+    });
+  </script>
+  <a id="test-button" rel="external" onclick="publishClimbingSession(); return false" data-role="button" href="">Post to Facebook</a>
+  <script>
+    function publishClimbingSession() {
+      // https://developers.facebook.com/docs/reference/dialogs/feed/
+      var obj = {
+        method: 'feed',
+        link: <%= "'#{root_url}'" %>,
+        name: <%= "'I just climbed " + pluralize(@latest_session.problem_count, "problem") + " at " + @latest_session.gym_name + "'" %>,
+        description: <%= "'and I maxed out on a #{@latest_session.hardest_problem_diff} problem'" %>
+      };
+
+      function callback(response) {
+        // do something
+      }
+
+      FB.ui(obj, callback);
+    };
+  </script>
+  <% end %>
+
 </div>
 
 <div data-role="content">
