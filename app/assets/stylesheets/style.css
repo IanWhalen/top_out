@@ -77,7 +77,7 @@
 
 /* Other Styles (To Be Organized) */
 
-span.inlinesparkline {
+span.wall-sparkline {
   float: left;
   padding: 0.7em 0 0.7em 15px;
   margin-right: -5px;
@@ -128,4 +128,8 @@ span.inlinesparkline {
   font-weight: bold;
   font-size: 18px;
   color: #555555;
+}
+
+.user-home.heading {
+  margin: 8px 0px;
 }
