@@ -15,5 +15,17 @@
     <% end %>
   
   </ul>
-</div>
+  </div>
+
+  <script>
+    $('.unsolved_problem').live('ajax:success', function(evt, data, status, xhr) {
+      if (data.sign_in_needed) {
+        $.mobile.changePage(data.sign_in_needed, "slide", false, true);
+      } else {
+        $(<%= "'#unsolved_problem_#{problem.id}'" %>).closest('li').remove();
+        return false;
+      }
+    });
+  </script>
+
 <% end %>
