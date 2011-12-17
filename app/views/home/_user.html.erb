@@ -67,9 +67,10 @@
       var obj = {
         method: 'feed',
         link: <%= "'#{root_url}'" %>,
+        picture: <%= "'" + image_url("fb-post-icon.jpg") + "'" %>,
         name: <%= "'I just climbed " + pluralize(@latest_session.problem_count, "problem") + " at " + @latest_session.gym_name + "'" %>,
-        description: <%= "'and I maxed out on a #{@latest_session.hardest_problem_diff} problem'" %>
-      };
+        description: <%= "'and I maxed out on a #{@latest_session.hardest_problem_diff} problem'" %>,
+        };
 
       function callback(response) {
         // do something
