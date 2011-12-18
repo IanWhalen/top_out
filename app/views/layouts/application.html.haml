@@ -1,0 +1,40 @@
+!!! html
+
+%html
+  %head
+    %title The Top Out
+    
+    = stylesheet_link_tag "application"
+    %link{:type => "text/css", :rel => "stylesheet", :href => "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css"}
+    %link{:type => "text/css", :rel => "stylesheet", :href => "http://fonts.googleapis.com/css?family=Cabin+Sketch:700"}
+
+    = javascript_include_tag "application"
+    %script{:type => "text/javascript", :src => "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"}
+    %script{:type => "text/javascript"} if (window.location.hash == '#_=_')window.location.hash = '';
+
+    = csrf_meta_tag
+
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
+
+  %body
+    #mainPage{:"data-role" => "page"}
+      %div{:"data-role" => "header"}
+        %div
+          = link_to root_path do
+            %h2#home-title The Top Out
+        - if current_user
+          = link_to "Sign out", destroy_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out"
+        - else
+          = link_to_unless_current "Sign in", new_user_session_path, :class => "ui-btn-right button", :id => "sign-in-out" do end
+        = yield :navbar
+
+      - if not flash.empty?
+        %div{:"data-role" => "content"}
+          %ul.ui-listview{:"data-role" => "listview"}
+            - flash.each do |name, msg|
+              = content_tag :li, msg, :id => "flash_#{name}", :class => "ui-bar-e", :"data-role" => "list-divider" if msg.is_a?(String)
+
+      = yield :content
+
+      %div{:"data-role" => "footer"}
+        %h5#footer-text This site is in alpha.  Please be gentle
