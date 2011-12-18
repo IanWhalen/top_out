@@ -1,0 +1,5 @@
+- content_for :content do
+  - if current_user
+    - render :partial => "user"
+  - else
+    - render :partial => "anon"

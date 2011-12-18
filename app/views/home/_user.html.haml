@@ -1,0 +1,91 @@
+#fb-root
+%script{:src => "//connect.facebook.net/en_US/all.js"}
+:javascript
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '138283156235665', // App ID
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+    var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    d.getElementsByTagName('head')[0].appendChild(js);
+  }(document));
+
+
+%div{:"data-role" => "content"}
+  %p.user-home.heading Your Stats
+  .ui-body-d.ui-body{:"data-role" => "navbar"}
+    %ul
+      %li
+        .user-home.stats.number
+          %span= current_user.total_problems_solved
+        .user-home.stats.text
+          %span problems
+      %li
+        .user-home.stats.number
+          %span 0
+        .user-home.stats.text
+          %span routes
+      %li
+        .user-home.stats.number
+          %span 1
+        .user-home.stats.text
+          %span gyms
+      %li
+        .user-home.stats.number
+          %span 0
+        .user-home.stats.text
+          %span feet
+
+
+  - if @latest_session
+    %p.user-home.heading Your Last Climbs
+    %span.session-sparkline= @latest_session.sparkline_data
+
+    :javascript
+      $(function() { 
+        $('.session-sparkline').sparkline('html', {
+          type:'bar', barWidth:16, colorMap:["hsl(120,100%,40%)","hsl(113,100%,40%)", "hsl(106,100%,40%)", "hsl(99,100%,40%)", "hsl(92,100%,40%)", "hsl(85,100%,40%)", "hsl(78,100%,40%)", "hsl(71,100%,40%)", "hsl(64,100%,40%)", "hsl(57,100%,40%)", "hsl(50,100%,40%)", "hsl(43,100%,40%)", "hsl(36,100%,40%)", "hsl(29,100%,40%)", "hsl(22,100%,40%)", "hsl(15,100%,40%)", "hsl(8,100%,40%)"]
+        });
+      });
+      
+      $('#mainPage').live('pageshow', function() {
+        // Go ahead and draw the now-visible sparkline tags
+        $.sparkline_display_visible();
+      });
+
+    %a#test-button{:rel => "exteral", :onclick => "publishClimbingSession(); return false", :"data-role" => "button", :href => ""} Post to Facebook
+    :javascript
+      function publishClimbingSession() {
+        var obj = {
+          method: 'feed',
+          link: '#{root_url}',
+          name: 'The Top Out', 
+          picture: '#{image_url("fb-post-icon.jpg")}',
+          description: 'I just climbed #{pluralize(@latest_session.problem_count, "problem")} at #{@latest_session.gym_name} and maxed out on a #{@latest_session.hardest_problem_diff}.'
+        };
+
+        function callback(response) {
+          // do something
+        }
+
+        FB.ui(obj, callback);
+      };
+
+%div{:"data-role" => "content"}
+  %ul{:"data-role" => "listview"}
+    - unless @latest_gym.nil?
+      %li= link_to "Last seen at #{@latest_gym.name}", @latest_gym
+    %li= link_to "Find a nearby gym", gyms_path, :"data-prefetch" => true
+    - if current_user.try(:admin?)
+      %li= link_to "Add a new wall (Admin only)", new_wall_path
