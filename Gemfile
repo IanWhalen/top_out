@@ -7,6 +7,7 @@ gem 'hirb'
 gem 'devise'
 gem 'cancan'
 gem 'omniauth-facebook'
+gem 'haml'
 
 group :production do
   gem 'mysql'
