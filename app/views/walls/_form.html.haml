@@ -1,0 +1,16 @@
+= form_for(@wall) do |f|
+  - if @wall.errors.any?
+    #error_explanation
+      %h2 #{pluralize(@wall.errors.count, "error")} prohibited this wall from being saved:
+      %ul
+        - @wall.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.text_field :name, :id => "wall-name", :placeholder => "Wall name"
+  .field
+    = f.text_field :height, :id => "wall-height", :placeholder => "Wall height"
+  .field
+    = f.collection_select :gym_id, @gyms, :id, :name, :id => "gym_select", :prompt => "Select a gym"
+  .actions
+    = f.submit
