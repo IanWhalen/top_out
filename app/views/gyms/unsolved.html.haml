@@ -1,0 +1,22 @@
+- content_for :header do
+  %h1= @gym.name
+
+- content_for :content do
+  #unsolved-problem-list{:"data-role" => "content"}
+    %ul{:"data-role" => "listview"}
+      %li{:"data-role" => "list-divider"} Unsolved Problems
+      - if current_user
+        = render :partial => 'problem', :collection => current_user.unsolved_problems(@gym).sort
+      - else
+        = render :partial => 'problem', :collection => @gym.all_live_problems.sort
+    
+    :javascript
+      $('.unsolved_problem').live('ajax:success', function(evt, data, status, xhr) {
+        if (data.sign_in_needed) {
+          $.mobile.changePage(data.sign_in_needed, "slide", false, true);
+        } else {
+          problem_id = "#unsolved_problem_" + data.problem_id
+          $(problem_id).closest('li').remove();
+          return false;
+        }
+      });

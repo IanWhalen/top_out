@@ -1,0 +1,26 @@
+%li{:"data-icon" => "check"}
+  = link_to(url_for(:controller => "completed_problems", :action => "create", :problem_id => "#{problem.id}"),
+    {:class => "unsolved_problem",
+    :id => "unsolved_problem_#{problem.id}",
+    :confirm => "Just climbed the #{problem.name} problem?",
+    :remote => true,
+    :"data-type" => "json",
+    :method => "POST"}) do
+
+    .problem_colors
+      - if problem.color_three
+        .problem_stripe{:style => "width: 34%; background: #{Color::CHOICES[problem.color_one]["hex"]}"}
+        .problem_stripe{:style => "width: 34%; background: #{Color::CHOICES[problem.color_two]["hex"]}"}
+        .problem_stripe{:style => "width: 34%; background: #{Color::CHOICES[problem.color_three]["hex"]}"}
+      - elsif problem.color_two
+        .problem_stripe{:style => "width: 50%; background: #{Color::CHOICES[problem.color_one]["hex"]}"}
+        .problem_stripe{:style => "width: 50%; background: #{Color::CHOICES[problem.color_two]["hex"]}"}
+      - else
+        .problem_stripe{:style => "width: 100%; background: #{Color::CHOICES[problem.color_one]["hex"]}"}
+
+    .problem_text
+      %h3= problem.name
+      %p.last_complete= problem.wall.name
+
+    %p.ui-li-aside.difficulty
+      %strong= problem.difficulty
