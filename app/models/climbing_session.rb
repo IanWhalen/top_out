@@ -18,15 +18,17 @@ class ClimbingSession < ActiveRecord::Base
   end
 
   def problem_count
-    @count = completed_problems.count
+    completed_problems.count
+  end
+
+  def problems
+    Problem.
+      joins(:completed_problems).
+      where(:completed_problems => {:id => completed_problems}).
+      sort
   end
 
   def hardest_problem_diff
-    Problem.joins(:completed_problems).
-      where(:completed_problems => {:id => completed_problems}).
-      sort.
-      last.
-      difficulty
+    problems.last.difficulty
   end
-
 end
