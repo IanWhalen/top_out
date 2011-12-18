@@ -1,0 +1,9 @@
+%div{:"data-role" => "content"}
+  %div#home-two-col
+    %div#home-left-col
+      %p#home-tagline The best way to track and improve your climbing.
+    %div#home-right-col
+      = link_to "Sign Up", new_user_registration_path, :class => "button", :id => "home-sign-up"
+  = image_tag("home-image.jpg", :id => "home-image")
+  %p This site is optimized for mobile use.
+  %p (So don't be surprised if it looks strange on your computer.)
