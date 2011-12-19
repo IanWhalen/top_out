@@ -7,8 +7,8 @@
           %li= msg
 
   .field
-    %p New problem on
-      %strong= link_to @wall.name, @wall
+    %p New problem on                     |
+      %strong= link_to @wall.name, @wall  |
   .field
     = f.select :color_one, @colors.map {|k, v| k}, {:prompt => "Select first color"}, {}
   .field

@@ -9,11 +9,11 @@
     - flash.each do |key, value|
       %div{:class => "flash #{key}"} #{value}
     
-    %p#email= f.email_field :email, :placeholder => "Email"
+    %p= f.email_field :email, :id => "email", :placeholder => "Email"
 
-    %p#password= f.password_field :password, :placeholder => "Password"
+    %p= f.password_field :password, :id => "password", :placeholder => "Password"
 
-    %p#password_confirmation= f.password_field :password_confirmation, :placeholder => "Password confirmation"
+    %p= f.password_field :password_confirmation, :id => "password_confirmation", :placeholder => "Password confirmation"
 
     %p= f.submit "Sign up"
     %br/
