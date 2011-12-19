@@ -1,0 +1,21 @@
+= form_for([@wall, @problem]) do |f|
+  - if @problem.errors.any?
+    #error_explanation
+      %h2 #{pluralize(@problem.errors.count, "error")} prohibited this wall from being saved:
+      %ul
+        - @problem.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %p New problem on
+      %strong= link_to @wall.name, @wall
+  .field
+    = f.select :color_one, @colors.map {|k, v| k}, {:prompt => "Select first color"}, {}
+  .field
+    = f.select :color_two, @colors.map {|k, v| k}, {:prompt => "Select second color"}, {}
+  .field
+    = f.select :color_three, @colors.map {|k, v| k}, {:prompt => "Select third color"}, {}
+  .field
+    = f.text_field :difficulty, :id => 'difficulty', :placeholder => 'Difficulty'
+  .actions
+    = f.submit
