@@ -1,0 +1,23 @@
+- content_for :content do
+  %div{:"data-role" => "content"}
+    %h4#account-manage-title" Sign up now!
+    %p Just type in your email and password below so you can start tracking your climbing.
+  
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    
+    - flash.each do |key, value|
+      %div{:class => "flash #{key}"} #{value}
+    
+    %p#email= f.email_field :email, :placeholder => "Email"
+
+    %p#password= f.password_field :password, :placeholder => "Password"
+
+    %p#password_confirmation= f.password_field :password_confirmation, :placeholder => "Password confirmation"
+
+    %p= f.submit "Sign up"
+    %br/
+
+  = link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook)
+
+  %p Have an account? #{link_to "Sign in here!", new_session_path(resource_name)}
