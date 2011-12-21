@@ -10,7 +10,7 @@ gem 'omniauth-facebook'
 gem 'haml'
 
 group :production do
-  gem 'mysql'
+  gem 'pg'
 end
 
 group :test, :development do
