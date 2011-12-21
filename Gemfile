@@ -1,19 +1,15 @@
 source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 
-gem 'capistrano'
+gem 'heroku'
 gem 'jquery-rails'
-gem 'hirb'
 gem 'devise'
 gem 'cancan'
 gem 'omniauth-facebook'
 gem 'haml'
 
-group :production do
-  gem 'pg'
-end
-
-group :test, :development do
+group :development, :test do
+  gem 'hirb'
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem "rspec-rails", ">= 2.6.1"
