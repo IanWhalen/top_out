@@ -8,6 +8,10 @@ gem 'cancan'
 gem 'omniauth-facebook'
 gem 'haml'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'hirb'
   gem 'sqlite3'
