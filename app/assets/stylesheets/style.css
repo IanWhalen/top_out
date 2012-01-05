@@ -133,3 +133,7 @@ span.wall-sparkline {
 .user-home.heading {
   margin: 8px 0px;
 }
+
+li.climbing_session {
+  overflow: auto;
+}
