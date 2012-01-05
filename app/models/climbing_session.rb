@@ -8,13 +8,22 @@ class ClimbingSession < ActiveRecord::Base
     completed_problems.first.gym.name.to_s
   end
 
+  def group_by_difficulty(grade)
+    completed_problems.joins(:problem).where(:problems => { :difficulty => ["V#{grade}", "V#{grade}+", "V#{grade}-"]}).count
+  end
+
+  # Return an array of 16 numbers
+  # Each number is the count problems solved for V0, V1, etc.
   def sparkline_data
-    @p = completed_problems
-    data = @p.joins(:problem).where(:problems => { :difficulty => ["V0", "V0+", "V0-"]}).count.to_s
-    (1..16).each do |n|
-      data << "," << @p.joins(:problem).where(:problems => { :difficulty => ["V#{n}", "V#{n}+", "V#{n}-"]}).count.to_s
+    data = Array.new
+    0.upto(16).each do |n|
+      data << group_by_difficulty(n)
     end
-    return data
+    data
+  end
+
+  def sparkline_data_for_user_home
+    sparkline_data.to_sentence(:words_connector => ",", :last_word_connector => ",")
   end
 
   def problem_count
@@ -31,4 +40,21 @@ class ClimbingSession < ActiveRecord::Base
   def hardest_problem_diff
     problems.last.difficulty
   end
+
+  def fb_post_data
+    data = Array.new
+    16.downto(0).each do |n|
+      val = group_by_difficulty(n)
+      if group_by_difficulty(n) > 0
+        data << "#{helpers.pluralize(val, "V#{n} problem", "V#{n} problems")}"
+      end
+    end
+
+    "Today: #{data[0..2].to_sentence}.  Like a boss."
+  end
+
+  def helpers
+      ActionController::Base.helpers
+  end
+
 end

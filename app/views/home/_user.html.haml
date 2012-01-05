@@ -50,7 +50,7 @@
 
   - if @latest_session
     %p.user-home.heading Your Last Climbs
-    %span.session-sparkline= @latest_session.sparkline_data
+    %span.session-sparkline= @latest_session.sparkline_data_for_user_home
 
     :javascript
       $(function() { 
@@ -70,9 +70,9 @@
         var obj = {
           method: 'feed',
           link: '#{root_url}',
-          name: 'The Top Out', 
           picture: '#{image_url("fb-post-icon.jpg")}',
-          description: 'I just climbed #{pluralize(@latest_session.problem_count, "problem")} at #{@latest_session.gym_name} and maxed out on a #{@latest_session.hardest_problem_diff}.'
+          name: 'I just climbed #{pluralize(@latest_session.problem_count, "problem")} at #{@latest_session.gym_name}',
+          description: '#{@latest_session.fb_post_data}'
         };
 
         function callback(response) {
