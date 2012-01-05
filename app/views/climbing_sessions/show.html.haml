@@ -1,0 +1,12 @@
+- content_for :header do
+  %h1= current_user
+
+- content_for :content do
+  %div{:"data-role" => "content"}
+    %ul{:"data-inset" =>"true",:"data-role" => "listview"}
+
+      %li{:"data-role" => "list-divider"}
+        =@climbing_session.gym_name
+        \-
+        =@climbing_session.readable_start_date
+      = render :partial => 'problem', :collection => @climbing_session.problems

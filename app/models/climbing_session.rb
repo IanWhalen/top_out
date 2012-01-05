@@ -29,7 +29,8 @@ class ClimbingSession < ActiveRecord::Base
   #
   # Returns an array of 16 integers
   def raw_sparkline_data
-    0.upto(16).each {|diff| (data ||= []) << count_by_difficulty_group(diff)}
+    data = []
+    0.upto(16).each {|diff| data << count_by_difficulty_group(diff)}
     data
   end
 
@@ -51,10 +52,7 @@ class ClimbingSession < ActiveRecord::Base
   #
   #
   def problems
-    Problem.
-      joins(:completed_problems).
-      where(:completed_problems => {:id => completed_problems}).
-      sort
+    Problem.joins(:completed_problems).where(:completed_problems => {:id => completed_problems}).sort
   end
 
   # The difficulty of the hardest problem in the ClimbingSession
@@ -68,7 +66,8 @@ class ClimbingSession < ActiveRecord::Base
   #
   # Returns a string
   def fb_post_data
-    16.downto(0).each {|diff| (data ||= []) << pluralize_problem(count_by_difficulty_group(diff), diff) if count_by_difficulty_group(diff) > 0}
+    data = []
+    16.downto(0).each {|diff| data << pluralize_problem(count_by_difficulty_group(diff), diff) if count_by_difficulty_group(diff) > 0}
     "Today: #{data[0..2].to_sentence}.  Like a boss."
   end
 

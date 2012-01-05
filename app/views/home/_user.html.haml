@@ -69,7 +69,7 @@
       function publishClimbingSession() {
         var obj = {
           method: 'feed',
-          link: '#{root_url}',
+          link: '#{climbing_session_url(@latest_session)}',
           picture: '#{image_url("fb-post-icon.jpg")}',
           name: 'I just climbed #{pluralize(@latest_session.problem_count, "problem")} at #{@latest_session.gym_name}',
           description: '#{@latest_session.fb_post_data}'
