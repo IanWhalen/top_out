@@ -5,7 +5,7 @@
   %div{:"data-role" => "content"}
     %ul{:"data-role" => "listview"}
       - if current_user.try(:admin?)
-        %li= link_to "Add anew problem (Admin only)", new_wall_problem_path(@wall)
+        %li= link_to "Add a new problem (Admin only)", new_wall_problem_path(@wall)
 
       %li{:"data-role" => "list-divider"}= @wall.name
       = render :partial => 'problem', :collection => @wall.live_problems.sort
