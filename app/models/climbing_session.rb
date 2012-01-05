@@ -4,6 +4,12 @@ class ClimbingSession < ActiveRecord::Base
 
   validates_presence_of :user
 
+  #
+  #
+  # Return a string
+  def readable_start_date
+    start.strftime("%B %e, %Y")
+  end
 
   # The name of the gym for the first problem in a ClimbingSession
   #
