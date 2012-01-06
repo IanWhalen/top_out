@@ -1,17 +1,10 @@
 class WallsController < ApplicationController
   load_and_authorize_resource
-  
-  def show
-    @wall = Wall.find(params[:id])
-  end
+  before_filter :find_wall, :only => [:show, :edit, :clear]
 
   def new
     @wall = Wall.new
     @gyms = Gym.all
-  end
-
-  def edit
-    @wall = Wall.find(params[:id])
   end
 
   def create
@@ -25,35 +18,12 @@ class WallsController < ApplicationController
   end
 
   def clear
-    @wall = Wall.find(params[:id])
     @wall.live_problems.update_all(:is_live => false)
-
     redirect_to(gym_url(@wall.gym))
   end
 
-  # PUT /walls/1
-  def update
-    @wall = Wall.find(params[:id])
-
-    respond_to do |format|
-      if @wall.update_attributes(params[:wall])
-        format.html { redirect_to(@wall, :notice => 'Wall was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @wall.errors, :status => :unprocessable_entity }
-      end
+  protected
+    def find_wall
+      @wall = Wall.find(params[:id])
     end
-  end
-
-  # DELETE /walls/1
-  def destroy
-    @wall = Wall.find(params[:id])
-    @wall.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(walls_url) }
-      format.xml  { head :ok }
-    end
-  end
 end
