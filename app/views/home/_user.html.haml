@@ -77,3 +77,4 @@
     %li= link_to "Find a nearby gym", gyms_path, :"data-prefetch" => true
     - if current_user.try(:admin?)
       %li= link_to "Add a new wall (Admin only)", new_wall_path
+    %li= link_to "Edit your preferences", edit_user_registration_path
