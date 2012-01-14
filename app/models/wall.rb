@@ -5,7 +5,10 @@ class Wall < ActiveRecord::Base
   has_many   :routes
   
   validates :name, :presence => true
-  
+ 
+  # Average difficulty of all live Problems on the wall
+  #
+  # Returns an integer or nil
   def average_difficulty
     @p = live_problems
     if @p.size > 0
@@ -15,10 +18,16 @@ class Wall < ActiveRecord::Base
     end
   end
 
+  # Name of the Gym and the Wall
+  #
+  # Returns a string
   def gym_plus_wall_name
     "#{gym.name} - #{name}"
   end
 
+  # The number of live problems on this wall for a given grouping of difficulties
+  #
+  # Returns a string of 16 comma-separated integers
   def sparkline_data
     @p = live_problems
     data = @p.where(:difficulty => ['V0', 'V0+', 'V0-']).count.to_s
