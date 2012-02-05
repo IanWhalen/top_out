@@ -12,6 +12,7 @@
     %script{:type => "text/javascript", :src => "http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"}
     %script{:type => "text/javascript"} if (window.location.hash == '#_=_')window.location.hash = '';
 
+    = favicon_link_tag 'favicon.ico'
     = csrf_meta_tag
 
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
