@@ -23,6 +23,13 @@ class Problem < ActiveRecord::Base
     list_colors.to_sentence :last_word_connector => ' & ', :two_words_connector => ' & '
   end
 
+  # Test if problem was solved by a specific user
+  #
+  # Returns true or false
+  def solved(user)
+    Problem.includes({:completed_problems => :user}).where('users.id = ?', user.id).where(:id => self.id).present?
+  end
+
   def <=>(other)
     Difficulty.to_int(self.difficulty) <=> Difficulty.to_int(other.difficulty)
   end
