@@ -79,7 +79,8 @@ class User < ActiveRecord::Base
   # Returns an Array of Problems
   def unsolved_problems(gym)
     Problem.includes({:wall => :gym}, :completed_problems).
-      where('problems.is_live = ? AND gyms.id = ? AND problems.id NOT IN (select problem_id from completed_problems where user_id = ?)', true, gym.id, self.id)
+      where('problems.is_live = ? AND gyms.id = ? AND problems.id NOT IN (select problem_id from completed_problems where user_id = ?)', true, gym.id, self.id).
+      sort
   end
 
   private

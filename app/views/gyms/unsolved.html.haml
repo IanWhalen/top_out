@@ -6,7 +6,7 @@
     %ul{:"data-role" => "listview"}
       %li{:"data-role" => "list-divider"} Unsolved Problems
       - if current_user
-        = render :partial => 'problem', :collection => current_user.unsolved_problems(@gym).sort
+        = render :partial => 'problem', :collection => current_user.unsolved_problems(@gym)
       - else
         = render :partial => 'problem', :collection => @gym.all_live_problems.sort
     
