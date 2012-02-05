@@ -1,6 +1,6 @@
 %li{:"data-icon" => "check"}
   = link_to(url_for(:controller => "completed_problems", :action => "create", :problem_id => "#{problem.id}"),
-    {:class => "wall_problem",
+    {:class => "wall_problem #{"solved" if problem.solved(current_user)}",
     :id => "problem_#{problem.id}",
     :confirm => "Just climbed the #{problem.name} problem?",
     :remote => true,

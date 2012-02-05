@@ -137,3 +137,7 @@ span.wall-sparkline {
 li.climbing_session {
   overflow: auto;
 }
+
+a.solved h3, a.solved p {
+  color: #999999;
+}
