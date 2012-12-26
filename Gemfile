@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 
 gem 'heroku'
-gem 'jquery-rails'
 gem 'devise'
 gem 'cancan'
 gem 'omniauth-facebook'

@@ -1,9 +1,5 @@
-// //= require jquery.min
 // //= require jquery_ujs
 // //= require jquery.sparkline.min
-$(document).bind("mobileinit", function(){
-  $.mobile.linkBindingEnabled = false;
-});
 
 $('#mainPage').live('pageshow', function() {
   var colorArr = ["hsl(120,100%,40%)", "hsl(113,100%,40%)", "hsl(106,100%,40%)", "hsl(99,100%,40%)",
@@ -11,7 +7,7 @@ $('#mainPage').live('pageshow', function() {
 	          "hsl(64,100%,40%)", "hsl(57,100%,40%)", "hsl(50,100%,40%)", "hsl(43,100%,40%)",
 	          "hsl(36,100%,40%)", "hsl(29,100%,40%)", "hsl(22,100%,40%)", "hsl(15,100%,40%)",
 	          "hsl(8,100%,40%)"]
-      
+
   $('.session-sparkline').sparkline('html', {
     type:'bar',
     barWidth:16,
