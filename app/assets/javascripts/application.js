@@ -22,12 +22,22 @@ $('#mainPage').live('pageshow', function() {
   });
 });
 
-$('.wall_problem').live('ajax:success', function(evt, data, status, xhr) {
+// hack to make links in listview not active
+// otherwise they stay highlighted permanently
+$( document ).on({
+  popupafteropen: function(){
+    $("ul").children().removeClass("ui-btn-active");
+  }
+});
+
+$( document ).on('ajax:success', "a", function(xhr, data, status) {
+  // check if controller tried to do something that needs a registered user
   if (data.sign_in_needed) {
     $.mobile.changePage(data.sign_in_needed, "slide", false, true);
   } else {
     link_id = 'a#problem_' + data.problem_id;
     $('ul').find(link_id).find('.last_complete').text("Nice job!");
+    $( "#popup_problem_" + data.problem_id ).popup( "close" );
     return false;
   }
 });

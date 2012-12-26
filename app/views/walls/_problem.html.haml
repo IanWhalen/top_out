@@ -1,11 +1,5 @@
 %li{:"data-icon" => "check"}
-  = link_to(url_for(:controller => "completed_problems", :action => "create", :problem_id => "#{problem.id}"),
-    {:class => "wall_problem #{"solved" if current_user && problem.solved(current_user)}",
-    :id => "problem_#{problem.id}",
-    :confirm => "Just climbed the #{problem.name} problem?",
-    :remote => true,
-    :"data-type" => "json",
-    :method => "POST"}) do
+  = link_to("#popup_problem_#{problem.id}", {data: {rel: "popup"}, :"position-to" => "window", :class => "wall_problem #{"solved" if current_user && problem.solved(current_user)}", :id => "problem_#{problem.id}"}) do
 
     .problem_colors
       - if problem.color_three
@@ -21,6 +15,14 @@
     .problem_text
       %h3= problem.name
       %p.last_complete= "#{time_ago_in_words(current_user.time_of_last_completion_of_problem(problem))} ago" if current_user && current_user.time_of_last_completion_of_problem(problem)
-    
+
     %p.ui-li-aside.difficulty
       %strong= problem.difficulty
+
+  %div{:id => "popup_problem_#{problem.id}", :"data-overlay-theme" => "a", data: {role: "popup", shadow: "true"}}
+    %div{data: {role: "header"}}
+      %h1.ui-title{:role => "heading"} Finished?
+    %div{data: {role: "content"}}
+      %h5= "Did you just send the #{problem.difficulty} #{problem.name} problem?"
+      = link_to( "Done!", url_for(:controller => "completed_problems", :action => "create", :problem_id => "#{problem.id}"), {:"data-role" => "button", :remote => true, :"data-type" => "json", :method => "POST"})
+      = link_to( "Not yet", {}, {data: {role: "button", rel: "back"}})
