@@ -20,3 +20,13 @@ $('#mainPage').live('pageshow', function() {
     colorMap:colorArr
   });
 });
+
+$('.wall_problem').live('ajax:success', function(evt, data, status, xhr) {
+  if (data.sign_in_needed) {
+    $.mobile.changePage(data.sign_in_needed, "slide", false, true);
+  } else {
+    link_id = 'a#problem_' + data.problem_id;
+    $('ul').find(link_id).find('.last_complete').text("Nice job!");
+    return false;
+  }
+});
