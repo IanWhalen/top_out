@@ -21,4 +21,12 @@ class ProblemsController < ApplicationController
       render :action => "new"
     end
   end
+
+  def clear
+    @problem = Problem.find(params[:id])
+
+    if @problem.update_attributes(:is_live => false)
+      redirect_to(wall_url(params[:wall_id]))
+    end
+  end
 end

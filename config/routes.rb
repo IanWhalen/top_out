@@ -8,15 +8,13 @@ TopOut::Application.routes.draw do
   resources :climbing_sessions
   resources :routes
   resources :walls do
-    resources :problems
-    member do
-      post 'clear'
+    post 'clear', :on => :member
+    resources :problems do
+      post 'clear', :on => :member
     end
   end
   resources :gyms do
-    member do
-      get 'unsolved'
-    end
+    get 'unsolved', :on => :member
   end
   resources :home
 

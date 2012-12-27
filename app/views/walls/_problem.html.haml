@@ -26,3 +26,5 @@
       %h5= "Did you just send the #{problem.difficulty} #{problem.name} problem?"
       = link_to( "Done!", url_for(:controller => "completed_problems", :action => "create", :problem_id => "#{problem.id}"), {:"data-role" => "button", :remote => true, :"data-type" => "json", :method => "POST"})
       = link_to( "Not yet", {}, {data: {role: "button", rel: "back"}})
+      - if current_user.try(:admin?)
+        = button_to "Clear problem (Admin only)", clear_wall_problem_url(problem.wall, problem)
