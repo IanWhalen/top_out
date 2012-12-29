@@ -3,7 +3,7 @@ gem 'rails', '3.1.0'
 
 gem 'jquery-rails', '~> 2.1'
 gem 'heroku'
-gem 'devise'
+gem 'devise', '~> 2.1.2'
 gem 'cancan'
 gem 'omniauth-facebook'
 gem 'haml'
