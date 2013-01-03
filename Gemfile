@@ -16,7 +16,7 @@ end
 group :development, :test do
   gem 'hirb'
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger'
   gem "rspec-rails", ">= 2.6.1"
   gem "factory_girl_rails", ">= 1.1.0"
   gem "selenium-webdriver", ">= 2.10.0"
